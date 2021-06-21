@@ -1,3 +1,5 @@
+
+
 const SIMPLE_ENCODING = Dict(
     Symbol(Char(0x0621)) => Symbol("Hamza"),
     Symbol(Char(0x0622)) => Symbol("Alif+Maddah"),

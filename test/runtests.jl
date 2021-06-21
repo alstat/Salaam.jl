@@ -120,27 +120,34 @@ my_encoder = Dict(
 @test encode(ar_basmala) === "A~\$^l~ :mmiun~ :mziux^lu#h~ :mziux~Fl~"
 
 @info "trying out camel"
-using PyCall
-camel_dediac = pyimport("camel_tools.utils.dediac")
-camel_disambig = pyimport("camel_tools.disambig.mle")
+dis = disambig(split(dediac(ar_basmala)))
+@test join([d[2][1][2]["diac"] for d in dis], " ") === "بِسَمّ اللّٰه الرَحْمٰن الرَحِيم"
 
-mled = camel_disambig.MLEDisambiguator.pretrained()
-disambig = mled.disambiguate(split(ar_basmala))
+@info "Analyzer"
+analyze = Analyzer()
+@info analyze("موظف")
 
-@info disambig
-@info join([d[2][1][2]["diac"] for d in disambig], " ")
+@info "Generator"
+generate = Generator()
+lemma = "مُوَظَّف"
+features = Dict(
+    "pos" => "noun",
+    "gen" => "m",
+    "num" => "p"
+)
+@info generate(lemma, features)
 
-@info camel_dediac.dediac_ar(ar_basmala)
-# @info "Camel tools"
-# using Pkg
-# import PyCall: pyimport
-# ENV["PYTHON"] = "/usr/bin/python3"
-# Pkg.build("PyCall")
+@info "Reinflector"
+reinflect = Reinflector()
+word = "شوارع"
+features = Dict(
+    "num" => "d",
+    "prc1" => "bi_prep"
+)
 
-# # See https://stackoverflow.com/questions/12332975/installing-python-module-within-code.
-# const PIP_PACKAGES = ["camel-tools"]
+@info reinflect(word, features)
 
-# sys = pyimport("sys")
-# subprocess = pyimport("subprocess")
-# subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", "--upgrade", "--force-reinstall", PIP_PACKAGES...])
-# @pyimport camel_tools.morphology.database as camel_database
+@info "Tagger"
+sentence11 = tokenize("نجح بايدن في الانتخابات")
+tag = Tagger()
+@info tag(sentence11)

@@ -2,7 +2,6 @@ struct SimpleEncoder
     encode::Dict{Symbol,Symbol}
 end
 SimpleEncoder() = SimpleEncoder(SIMPLE_ENCODING)
-
 """
     encode(::Type{SimpleEncoder}, s::String)
 
