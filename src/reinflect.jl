@@ -13,7 +13,7 @@ end
 
 function Reinflector(db::Symbol)
     if db === :morphology
-        return Reinflector(camel_morphology("r"))
+        return Reinflector(camel_morphology(:r))
     end
 end
 

@@ -13,7 +13,7 @@ end
 
 function Generator(db::Symbol)
     if db === :morphology
-        return Generator(camel_morphology("g"))
+        return Generator(camel_morphology(:g))
     end
 end
 

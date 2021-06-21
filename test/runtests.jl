@@ -120,7 +120,8 @@ my_encoder = Dict(
 @test encode(ar_basmala) === "A~\$^l~ :mmiun~ :mziux^lu#h~ :mziux~Fl~"
 
 @info "trying out camel"
-dis = disambig(split(dediac(ar_basmala)))
+disambig = Disambiguator()
+dis = predict(disambig, split(dediac(ar_basmala)))
 @test join([d[2][1][2]["diac"] for d in dis], " ") === "بِسَمّ اللّٰه الرَحْمٰن الرَحِيم"
 
 @info "Analyzer"
@@ -151,3 +152,19 @@ features = Dict(
 sentence11 = tokenize("نجح بايدن في الانتخابات")
 tag = Tagger()
 @info tag(sentence11)
+
+@info "Morphological Tokenizer"
+sentence12 = tokenize("فتنفست الصعداء")
+morph_tokenize = MorphologicalTokenizer()
+@info morph_tokenize(sentence12)
+
+@info "Dialect Identifier"
+sentences13 = [
+    "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
+    "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
+]
+
+did = DialectIdentifier()
+
+@info predict(did, sentences13)
+
