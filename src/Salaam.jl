@@ -21,7 +21,7 @@ include("data.jl")
 
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
 
-export arabic, dediac, encode, normalize, tokenize, disambig, predict, google_drive_downloader
+export arabic, dediac, encode, normalize, tokenize, disambig, predict, install_camel
 export Analyzer, Disambiguator, Generator, Reinflector, Tagger, MorphologicalTokenizer, DialectIdentifier
 export AbstractEncoder
 export @transliterator, genproperties
