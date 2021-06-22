@@ -1,5 +1,3 @@
-import MLJ: predict
-
 function camel_disambig(model_name::Union{Symbol,Nothing}=nothing)
     disambig = pyimport("camel_tools.disambig.mle")  
     if model_name === :calima_msa_r13
