@@ -30,4 +30,6 @@ run(`$(PyCall.python) $(proxy_arg) -m pip install --user $(PACKAGES)`)
 
 println("Installing camel light data")
 os = pyimport("os")
+os.environ["CAMELTOOLS_DATA"] = joinpath(@__DIR__, "..", "data", "camel_tools")
+os.system("export")
 os.system("camel_data light")
