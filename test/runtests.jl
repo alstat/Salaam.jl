@@ -158,13 +158,13 @@ sentence12 = tokenize("فتنفست الصعداء")
 morph_tokenize = MorphologicalTokenizer()
 @info morph_tokenize(sentence12)
 
-@info "Dialect Identifier"
-sentences13 = [
-    "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
-    "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
-]
+# @info "Dialect Identifier"
+# sentences13 = [
+#     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
+#     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
+# ]
 
-did = DialectIdentifier()
+# did = DialectIdentifier()
 
-@info predict(did, sentences13)
+# @info predict(did, sentences13)
 
