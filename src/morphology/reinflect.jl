@@ -17,6 +17,6 @@ function Reinflector(db::Symbol)
     end
 end
 
-function (a::Reinflector)(s::String, features::Dict{String,String})
-    return camel_reinflector()(a.db).reinflect(s, features)
+function (r::Reinflector)(s::String, features::Dict{String,String})
+    return camel_reinflector()(r.db).reinflect(s, features)
 end

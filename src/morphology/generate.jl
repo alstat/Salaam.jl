@@ -17,6 +17,6 @@ function Generator(db::Symbol)
     end
 end
 
-function (a::Generator)(lemma::String, features::Dict{String,String})
-    return camel_generator()(a.db).generate(lemma, features)
+function (g::Generator)(lemma::String, features::Dict{String,String})
+    return camel_generator()(g.db).generate(lemma, features)
 end
