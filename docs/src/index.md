@@ -2,7 +2,7 @@
 
 Salaam.jl is a universal NLP toolkit for Arabic language. It offers features from basic to advance. For the basic utilities, it has the following functionalities: dediacritization, normalization, transliteration (including custom transliteration) and simple encoding. For advance features, it uses the CAMeL Tools' APIs for task such as, disambiguation, morphological analysis like generation and reinflection of a given word. It also includes dialectic identification, named-entity recognition and sentiment analysis. 
 
-Salaam /səˈläm/ (سلام) is the Arabic word for "peace", a universal Muslim greeting.
+Salaam /səˈläm/ (سلام) is the Arabic word for "peace", a common greeting in many Arabic-speaking and Muslim countries.
 
 ## Installation
 To install the package, run the following:
