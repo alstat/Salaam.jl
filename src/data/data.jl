@@ -8,7 +8,7 @@ function install_camel(full_data::Bool=false, data_directory::Union{Nothing,Stri
         else
             @info "downloading camel_data to " * data_directory
             ENV["CAMELTOOLS_DATA"] = data_directory
-            run(`export $(ENV["CAMELTOOLS_DATA"])`)
+            ;export
             run(`camel_data full`)
         end
     else
@@ -20,7 +20,7 @@ function install_camel(full_data::Bool=false, data_directory::Union{Nothing,Stri
         else
             @info "downloading camel_data to " * data_directory
             ENV["CAMELTOOLS_DATA"] = data_directory
-            run(`export $(ENV["CAMELTOOLS_DATA"])`)
+            ;export
             run(`camel_data light`)
         end
     end
