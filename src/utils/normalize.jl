@@ -1,4 +1,5 @@
 function normalize(c::Char, isarabic::Bool, encoder::AbstractEncoder)
+    @info isarabic
     ch = isarabic ? Symbol(c) : encoder.decode[Symbol(c)]
     if !isarabic
         return string(encoder.encode[SP_DEDIAC_MAPPING[ch]])
@@ -24,14 +25,26 @@ julia> normalize(dediac(verses(crpsdata[1][1])[1]))
 """
 function normalize(s::String)
     trans = Transliterator()
-    isarabic = in(Symbol(s[1]), collect(keys(trans.encode))) ? true : false
+    if !in(Symbol(s[1]), collect(keys(trans.encode)))
+        if in(Symbol(s[1]), SP_DEDIAC_KEYS)
+            isarabic = true
+            isnormalize = true
+        else
+            isarabic = false  
+            isnormalize = in(trans.decode[Symbol(c)], SP_DEDIAC_KEYS)      
+        end
+    else
+        isarabic = true
+        isnormalize = in(Symbol(c), SP_DEDIAC_KEYS)
+    end
+
     word = ""
     for c in s
         if c === ' '
             word *= " "
             continue
         end
-        isnormalize = !isarabic ? in(trans.decode[Symbol(c)], SP_DEDIAC_KEYS) : in(Symbol(c), SP_DEDIAC_KEYS)
+        
         if isnormalize
             word *= normalize(c, isarabic, trans)
         else

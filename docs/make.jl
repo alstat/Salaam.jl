@@ -7,7 +7,12 @@ makedocs(
         assets = ["assets/logo.ico"]
     ),
     authors = "Al-Ahmadgaid B. Asaad",
-    modules = [Salaam]
+    modules = [Salaam],
+    pages = [
+        "Home" => "index.md",
+        "Basic Utilities" => "man/basic_utilities.md",
+        "API" => "man/api.md"
+    ]
 )
 
 # Documenter can also automatically deploy documentation to gh-pages.

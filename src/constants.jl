@@ -125,11 +125,14 @@ const BW_ENCODING = Dict(
     Symbol(Char(0x06EA)) => Symbol('-'),
     Symbol(Char(0x06EB)) => Symbol('+'),
     Symbol(Char(0x06EC)) => Symbol('%'),
-    Symbol(Char(0x06ED)) => Symbol(']'),
-    Symbol(Char(0xFDFA)) => Symbol("SlY Allh Elyh wslm"),
-    Symbol(Char(0xFDFB)) => Symbol("jl jlAlh"),
-    Symbol(Char(0xFDFD)) => Symbol("bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi")
+    Symbol(Char(0x06ED)) => Symbol(']')
+    # Symbol(Char(0xFDFA)) => Symbol('θ'),
+    # Symbol(Char(0xFDFB)) => Symbol('ϕ'),
+    # Symbol(Char(0xFDFD)) => Symbol('Ω')
 );
+
+
+
 
 const AR_DIACS_REGEX = Regex(
     string(

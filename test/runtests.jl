@@ -33,15 +33,12 @@ sentence5 = "ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ فِيهِ 
 
 sentence6 = "ﷺ"
 @test normalize(sentence6) === "صلى الله عليه وسلم"
-@test normalize(sentence6, :SAW) === "صلى الله عليه وسلم"
 
 sentence7 = "ﷻ"
 @test normalize(sentence7) === "جل جلاله"
-@test normalize(sentence7, :jalla_jalalu) === "جل جلاله"
 
 sentence8 = "﷽"
 @test normalize(sentence8) === ar_basmala
-@test normalize(sentence8, :basmala) === ar_basmala
 
 sentence9 = "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰٓ أَجَلٍ مُّسَمًّى فَٱكْتُبُوهُ وَلْيَكْتُب بَّيْنَكُمْ كَاتِبٌۢ بِٱلْعَدْلِ وَلَا يَأْبَ كَاتِبٌ أَن يَكْتُبَ كَمَا عَلَّمَهُ ٱللَّهُ فَلْيَكْتُبْ وَلْيُمْلِلِ ٱلَّذِى عَلَيْهِ ٱلْحَقُّ وَلْيَتَّقِ ٱللَّهَ رَبَّهُۥ وَلَا يَبْخَسْ مِنْهُ شَيْـًٔا فَإِن كَانَ ٱلَّذِى عَلَيْهِ ٱلْحَقُّ سَفِيهًا أَوْ ضَعِيفًا أَوْ لَا يَسْتَطِيعُ أَن يُمِلَّ هُوَ فَلْيُمْلِلْ وَلِيُّهُۥ بِٱلْعَدْلِ وَٱسْتَشْهِدُوا۟ شَهِيدَيْنِ مِن رِّجَالِكُمْ فَإِن لَّمْ يَكُونَا رَجُلَيْنِ فَرَجُلٌ وَٱمْرَأَتَانِ مِمَّن تَرْضَوْنَ مِنَ ٱلشُّهَدَآءِ أَن تَضِلَّ إِحْدَىٰهُمَا فَتُذَكِّرَ إِحْدَىٰهُمَا ٱلْأُخْرَىٰ وَلَا يَأْبَ ٱلشُّهَدَآءُ إِذَا مَا دُعُوا۟ وَلَا تَسْـَٔمُوٓا۟ أَن تَكْتُبُوهُ صَغِيرًا أَوْ كَبِيرًا إِلَىٰٓ أَجَلِهِۦ ذَٰلِكُمْ أَقْسَطُ عِندَ ٱللَّهِ وَأَقْوَمُ لِلشَّهَٰدَةِ وَأَدْنَىٰٓ أَلَّا تَرْتَابُوٓا۟ إِلَّآ أَن تَكُونَ تِجَٰرَةً حَاضِرَةً تُدِيرُونَهَا بَيْنَكُمْ فَلَيْسَ عَلَيْكُمْ جُنَاحٌ أَلَّا تَكْتُبُوهَا وَأَشْهِدُوٓا۟ إِذَا تَبَايَعْتُمْ وَلَا يُضَآرَّ كَاتِبٌ وَلَا شَهِيدٌ وَإِن تَفْعَلُوا۟ فَإِنَّهُۥ فُسُوقٌۢ بِكُمْ وَٱتَّقُوا۟ ٱللَّهَ وَيُعَلِّمُكُمُ ٱللَّهُ وَٱللَّهُ بِكُلِّ شَىْءٍ عَلِيمٌ"
 @time dediac(sentence9)
@@ -118,7 +115,14 @@ my_encoder = Dict(
 
 @transliterator my_encoder "MyEncoder"
 @test encode(ar_basmala) === "A~\$^l~ :mmiun~ :mziux^lu#h~ :mziux~Fl~"
+@test arabic(encode(ar_basmala)) === ar_basmala
 
+old_keys = collect(keys(BW_ENCODING));
+new_vals = reverse(collect(values(BW_ENCODING)));
+my_encoder = Dict(old_keys .=> new_vals)
+@transliterator my_encoder "MyEncoder"
+@info encode(ar_basmala)
+@info arabic(encode(ar_basmala))
 @info "trying out camel"
 disambig = Disambiguator()
 dis = predict(disambig, split(dediac(ar_basmala)))
@@ -158,13 +162,13 @@ sentence12 = tokenize("فتنفست الصعداء")
 morph_tokenize = MorphologicalTokenizer()
 @info morph_tokenize(sentence12)
 
-@info "Dialect Identifier"
-sentences13 = [
-    "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
-    "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
-]
+# @info "Dialect Identifier"
+# sentences13 = [
+#     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
+#     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
+# ]
 
-did = DialectIdentifier()
+# did = DialectIdentifier()
 
-@info predict(did, sentences13)
+# @info predict(did, sentences13)
 
