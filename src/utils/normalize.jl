@@ -31,11 +31,11 @@ function normalize(s::String)
             isnormalize = true
         else
             isarabic = false  
-            isnormalize = in(trans.decode[Symbol(c)], SP_DEDIAC_KEYS)      
+            isnormalize = in(trans.decode[Symbol(s[1])], SP_DEDIAC_KEYS)      
         end
     else
         isarabic = true
-        isnormalize = in(Symbol(c), SP_DEDIAC_KEYS)
+        isnormalize = in(Symbol(s[1]), SP_DEDIAC_KEYS)
     end
 
     word = ""
