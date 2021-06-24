@@ -2,8 +2,11 @@ using Documenter
 using Salaam
 
 makedocs(
-    sitename = "Salaam",
-    format = Documenter.HTML(),
+    sitename = "Salaam.jl",
+    format = Documenter.HTML(
+        assets = ["assets/logo.ico"]
+    ),
+    authors = "Al-Ahmadgaid B. Asaad",
     modules = [Salaam]
 )
 
