@@ -1,5 +1,4 @@
 function normalize(c::Char, isarabic::Bool, encoder::AbstractEncoder)
-    @info isarabic
     ch = isarabic ? Symbol(c) : encoder.decode[Symbol(c)]
     if !isarabic
         return string(encoder.encode[SP_DEDIAC_MAPPING[ch]])
@@ -28,14 +27,11 @@ function normalize(s::String)
     if !in(Symbol(s[1]), collect(keys(trans.encode)))
         if in(Symbol(s[1]), SP_DEDIAC_KEYS)
             isarabic = true
-            # isnormalize = true
         else
             isarabic = false  
-            # isnormalize = in(trans.decode[Symbol(s[1])], SP_DEDIAC_KEYS)      
         end
     else
         isarabic = true
-        # isnormalize = in(Symbol(s[1]), SP_DEDIAC_KEYS)
     end
 
     word = ""
@@ -51,18 +47,7 @@ function normalize(s::String)
             word *= c
         end
     end
-    # for c in s
-    #     if c === ' '
-    #         word *= " "
-    #         continue
-    #     end
-        
-    #     if isnormalize
-    #         word *= normalize(c, isarabic, trans)
-    #     else
-    #         word *= c
-    #     end
-    # end
+    
     word = normalize(word, :tatweel)
     return word
 end
