@@ -11,7 +11,15 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Basic Utilities" => "man/basic_utilities.md",
-        "API" => "man/api.md"
+        "Disambiguation" => "man/disambiguation.md",
+        "Morphological Analysis" => "man/morphology.md",
+        "Morphological Tokenizer" => "man/tokenizer.md",
+        "POS Tagging" => "man/pos_tagging.md",
+        "API" => "man/api.md",
+        "Textbook on Arabic NLP" => [
+            "Introduction" => "book/introduction.md"
+            "Ch1. Structure" => "book/structure.md"
+        ]
     ]
 )
 

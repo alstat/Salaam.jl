@@ -14,7 +14,13 @@ Or using Buckwalter as follows:
 bw_basmala = "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi";
 dediac(bw_basmala)
 ```
-For dediacritization on custom transliteration, refer here.
+With Julia's broadcasting feature, the above dediacritization can be applied to arrays by simply adding `.` to the name of the function.
+```@repl abc
+sentence0 = ["بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ"
+]
+dediac.(sentence0)
+```
 ## Normalization
 The function to use is `normalize`, which works on Arabic, Buckwalter and custom transliterated characters. For example, using the `ar_basmala` and `bw_basmala` defined above, the normalized version would be
 ```@repl abc
@@ -25,7 +31,7 @@ You can also normalize specific characters, for example:
 ```@repl abc
 normalize(ar_basmala, :alif_khanjareeya)
 normalize(ar_basmala, :hamzat_wasl)
-sentence1 = "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ"
+sentence1 = "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ";
 normalize(sentence1, :alif_maddah)
 normalize(sentence1, :alif_hamza_above)
 sentence2 = "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ";
@@ -42,7 +48,11 @@ Or a combination,
 ```@repl abc
 normalize(ar_basmala, [:alif_khanjareeya, :hamzat_wasl])
 ```
-For normalization on custom transliteration, refer here.
+Broadcasting also applies to `normalize` function.
+```@repl abc
+normalize.(sentence0)
+normalize.(sentence0, [:alif_khanjareeya, :alif_hamza_below])
+```
 ## Transliteration
 By default, Salaam.jl uses [extended Buckwalter transliteration](https://corpus.quran.com/java/buckwalter.jsp). The function to use are `encode` (Arabic -> Roman) and `arabic` (Roman -> Arabic). The following are some examples:
 ```@repl abc
@@ -51,7 +61,7 @@ arabic(bw_basmala) === ar_basmala
 encode(ar_basmala)
 encode(ar_basmala) === bw_basmala
 ```
-### Custom Transliteration
+## Custom Transliteration
 For custom transliteration, user must specify the character mapping in a dictionary with `Symbol` type for both keys and values. By default, the Buckwalter mapping used in Salaam.jl is encoded in the constant variable `BW_ENCODING`.
 ```@repl abc
 BW_ENCODING
@@ -76,4 +86,30 @@ encode(ar_basmala)
 Reversing this two Arabic characters should give us the appropriate decoding:
 ```@repl abc
 arabic(encode(ar_basmala))
+```
+### Dediacritization and Normalization on Custom Transliteration
+As mentioned above, dediacritization and normalization also works on new custom transliteration. For example, dediacritizing the encoded `ar_basmala` would give us:
+```@repl abc
+dediac(encode(ar_basmala))
+
+dediac(encode(ar_basmala)) |> arabic
+```
+And for normalization, 
+
+```@repl abc
+normalize(encode(ar_basmala))
+
+normalize(encode(ar_basmala)) |> arabic
+```
+### Reset Transliteration
+To reset the transliteration back to Buckwalter, simply specify `:default` as the argument for the macro `@transliterator` as follows:
+```@repl abc
+@transliterator :default
+```
+With this, all functions dependent on transliteration will also get updated.
+```@repl abc
+encode(ar_basmala)
+encode(ar_basmala) === bw_basmala
+dediac(encode(ar_basmala))
+normalize(encode(ar_basmala))
 ```

@@ -28,14 +28,14 @@ function normalize(s::String)
     if !in(Symbol(s[1]), collect(keys(trans.encode)))
         if in(Symbol(s[1]), SP_DEDIAC_KEYS)
             isarabic = true
-            isnormalize = true
+            # isnormalize = true
         else
             isarabic = false  
-            isnormalize = in(trans.decode[Symbol(s[1])], SP_DEDIAC_KEYS)      
+            # isnormalize = in(trans.decode[Symbol(s[1])], SP_DEDIAC_KEYS)      
         end
     else
         isarabic = true
-        isnormalize = in(Symbol(s[1]), SP_DEDIAC_KEYS)
+        # isnormalize = in(Symbol(s[1]), SP_DEDIAC_KEYS)
     end
 
     word = ""
@@ -44,13 +44,25 @@ function normalize(s::String)
             word *= " "
             continue
         end
-        
+        isnormalize = !isarabic ? in(trans.decode[Symbol(c)], SP_DEDIAC_KEYS) : in(Symbol(c), SP_DEDIAC_KEYS)
         if isnormalize
             word *= normalize(c, isarabic, trans)
         else
             word *= c
         end
     end
+    # for c in s
+    #     if c === ' '
+    #         word *= " "
+    #         continue
+    #     end
+        
+    #     if isnormalize
+    #         word *= normalize(c, isarabic, trans)
+    #     else
+    #         word *= c
+    #     end
+    # end
     word = normalize(word, :tatweel)
     return word
 end
