@@ -1,13 +1,19 @@
-abstract type AbstractLongVowels end
+abstract type AbstractSolar end
+abstract type AbstractLunar end
 
-macro letter(name, parent, data, desc, ar_label)
+macro consonant(name, parent, with_preceding, with_following, with_both, numeral, vocal, long_vowel)
     esc(quote
         struct $name <: $parent
-            data::Symbol
-            desc::String
-            ar_label::String
+            with_preceding::Symbol
+            with_following::Symbol
+            with_both::Symbol
+            numeral::Int64
+            vocal::Symbol
+            long_vowel::Bool
         end
         
-        $name() = $name($data, $desc, $ar_label)
+        $name() = $name($data, $parent, $with_preceding, $with_following, $with_both, $numeral, $vocal, $long_vowel)
     end)
 end
+
+@consonant Alif AbstractLunar true false false 1 :soft
