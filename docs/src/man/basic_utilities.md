@@ -87,6 +87,14 @@ Reversing this two Arabic characters should give us the appropriate decoding:
 ```@repl abc
 arabic(encode(ar_basmala))
 ```
+If you want to see the properties of the new encoder, such as the `encoder` and `decoder` mapping used, including the new diacritics and special characters associated to the new transliteration, you can view this by calling the name of the type as follows:
+```@repl abc
+@desc MyEncoder
+```
+And for the default Buckwalter encoding, the properties can be viewed as follows:
+```@repl abc
+@desc Buckwalter
+```
 ### Dediacritization and Normalization on Custom Transliteration
 As mentioned above, dediacritization and normalization also works on new custom transliteration. For example, dediacritizing the encoded `ar_basmala` would give us:
 ```@repl abc
