@@ -1,13 +1,16 @@
-abstract type AbstractLetter end
-abstract type AbstractDiacritic end
-abstract type AbstractConsonant <: AbstractLetter end
+abstract type AbstractCharacter end
+abstract type AbstractDiacritic <: AbstractCharacter end
+abstract type AbstractConsonant <: AbstractCharacter end
 abstract type AbstractSolar <: AbstractConsonant end
 abstract type AbstractLunar <: AbstractConsonant end
 abstract type AbstractVowel <: AbstractDiacritic end
 abstract type AbstractTanween <: AbstractDiacritic end
-abstract type AbstractQuranPauseMark end
+abstract type AbstractQuranPauseMark <: AbstractCharacter end
 
 struct Tatweel end
+struct Orthography
+    data::Vector{Type}
+end
 
 struct Fatha <: AbstractVowel end
 struct Fathatan <: AbstractTanween end
@@ -19,47 +22,67 @@ struct Kasratan <: AbstractTanween end
 struct Shadda <: AbstractDiacritic end
 struct Sukun <: AbstractDiacritic end
 struct Maddah <: AbstractDiacritic end 
+struct HamzaAbove <: AbstractDiacritic end
+struct HamzaBelow <: AbstractDiacritic end
+struct HamzatWasl <: AbstractDiacritic end
+struct AlifKhanjareeya <: AbstractDiacritic end
 
-macro consonant(name, parent, with_preceding, with_following, numeral, vocal, long_vowel)
+struct SmallHighSeen <: AbstractCharacter end
+struct SmallHighRoundedZero <: AbstractCharacter end
+struct SmallHighUprightRectangularZero <: AbstractCharacter end
+struct SmallHighMeemIsolatedForm <: AbstractCharacter end
+struct SmallLowSeen <: AbstractCharacter end
+struct SmallWaw <: AbstractCharacter end
+struct SmallYa <: AbstractCharacter end
+struct SmallHighNoon <: AbstractCharacter end
+struct EmptyCenterLowStop <: AbstractCharacter end
+struct EmptyCenterHighStop <: AbstractCharacter end
+struct RoundedHighStopWithFilledCenter <: AbstractCharacter end
+struct SmallLowMeem <: AbstractCharacter end
+
+macro consonant(name, parent, numeral, vocal)
     esc(quote
-        struct $name <: $parent
-            with_preceding::Symbol
-            with_following::Symbol
-            numeral::Union{Int64,Nothing}
-            vocal::Symbol
-            long_vowel::Bool
-        end
-        
-        $name() = $name($data, $parent, $with_preceding, $with_following, $numeral, $vocal, $long_vowel)
+        struct $name <: $parent end
+        vocal(::Type{$name}) = $vocal
+        numeral(::Type{$name}) = $numeral
     end)
 end
 
-@consonant Alif AbstractLunar true false 1 :soft true
-@consonant Ba AbstractLunar true true 2 :labial false
-@consonant Ta AbstractSolar true true 400 :palate false
-@consonant Tha AbstractSolar true true 500 :gingival false
-@consonant Jeem AbstractLunar true true 3 :orifice false
-@consonant HHa AbstractLunar true true 8 :guttural false
-@consonant Kha AbstractLunar true true 600 :guttural false
-@consonant Dal AbstractSolar true false 4 :palate false
-@consonant Thal AbstractSolar true false 700 :gingival false
-@consonant Ra AbstractSolar true false 200 :liquid false
-@consonant Zain AbstractSolar true false 7 :sibilant false
-@consonant Seen AbstractSolar true true 60 :sibilant false
-@consonant Sheen AbstractSolar true true 300 :orifice false
-@consonant Sad AbstractSolar true true 90 :sibilant false
-@consonant DDad AbstractSolar true true 800 :orifice false
-@consonant TTa AbstractSolar true true 9 :palate false
-@consonant DTha AbstractSolar true true 900 :gingival false
-@consonant Ain AbstractLunar true true 70 :guttural false
-@consonant Ghain AbstractLunar true true 1000 :guttural false
-@consonant Fa AbstractLunar true true 80 :labial false
-@consonant Qaf AbstractLunar true true 100 :uvula false
-@consonant Kaf AbstractLunar true true 20 :uvula false
-@consonant Lam AbstractSolar true true 30 :liquid false
-@consonant Meem AbstractLunar true true 40 :labial false
-@consonant Nun AbstractSolar true true 50 :liquid false
-@consonant Waw AbstractLunar true false 6 :labial true
-@consonant Ha AbstractLunar true true 5 :guttural false
-@consonant Hamza AbstractLunar false false 1 :soft false
-@consonant Ya AbstractLunar true true 10 :soft true
+# for non-consonant with no vocal and numeral
+vocal(x) = try vocal(x) catch nothing end
+numeral(x) = try numeral(x) catch nothing end
+
+vocal(x::Orthography) = vocal.(x.data)
+numeral(x::Orthography) = numeral.(x.data)
+
+@consonant Alif AbstractLunar 1 :soft
+@consonant AlifMaksurah AbstractLunar 10 :soft
+@consonant Ba AbstractLunar 2 :labial
+@consonant Ta AbstractSolar 400 :palate
+@consonant TaMarbuta AbstractSolar 5 :palate
+@consonant Tha AbstractSolar 500 :gingival
+@consonant Jeem AbstractLunar 3 :orifice
+@consonant HHa AbstractLunar 8 :guttural
+@consonant Kha AbstractLunar 600 :guttural
+@consonant Dal AbstractSolar 4 :palate
+@consonant Thal AbstractSolar 700 :gingival
+@consonant Ra AbstractSolar 200 :liquid
+@consonant Zain AbstractSolar 7 :sibilant
+@consonant Seen AbstractSolar 60 :sibilant
+@consonant Sheen AbstractSolar 300 :orifice
+@consonant Sad AbstractSolar 90 :sibilant
+@consonant DDad AbstractSolar 800 :orifice
+@consonant TTa AbstractSolar 9 :palate
+@consonant DTha AbstractSolar 900 :gingival
+@consonant Ain AbstractLunar 70 :guttural
+@consonant Ghain AbstractLunar 1000 :guttural
+@consonant Fa AbstractLunar 80 :labial
+@consonant Qaf AbstractLunar 100 :uvula
+@consonant Kaf AbstractLunar 20 :uvula
+@consonant Lam AbstractSolar 30 :liquid
+@consonant Meem AbstractLunar 40 :labial
+@consonant Noon AbstractSolar 50 :liquid
+@consonant Waw AbstractLunar 6 :labial
+@consonant Ha AbstractLunar 5 :guttural
+@consonant Hamza AbstractLunar 1 :soft
+@consonant Ya AbstractLunar 10 :soft

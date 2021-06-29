@@ -130,6 +130,20 @@ my_encoder = Dict(old_keys .=> new_vals)
 @transliterator my_encoder "MyEncoder"
 @info encode(ar_basmala)
 @info arabic(encode(ar_basmala))
+
+@info "parsing the orthography"
+# @info Ba <: AbstractCharacter
+a = parse.(Orthography, tokenize(ar_basmala))
+# @info Type{Ba} <: AbstractCharacter
+# @info Type{Ba} <: Type{AbstractCharacter}
+@info a
+@info typeof(a)
+@info a[1].data[1]
+@info vocal(a[1].data[1])
+@info vocal(a[1])
+@info numeral(a[1].data[1])
+@info numeral(a[1])
+
 @info "trying out camel"
 disambig = Disambiguator()
 dis = predict(disambig, split(dediac(ar_basmala)))

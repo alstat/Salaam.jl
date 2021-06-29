@@ -8,11 +8,11 @@ const VERB_ASPECTS = Dict(
     Symbol("IMPF") => Imperfect(),
     Symbol("IMPV") => Imperative()
 )
-const CAMEL_VERB_ASPECTS = Dict(
-    Symbol("asp_p") => Perfect(Symbol("p"), "Perfect verb", "فعل ماض"),
-    Symbol("asp_i") => Imperfect(Symbol("i"), "Imperfect verb", "فعل مضارع"),
-    Symbol("asp_c") => Imperative(Symbol("c", "Imperative or command verb", "فعل أمر"))
-)
+# const CAMEL_VERB_ASPECTS = Dict(
+#     Symbol("asp_p") => Perfect(Symbol("p"), "Perfect verb", "فعل ماض"),
+#     Symbol("asp_i") => Imperfect(Symbol("i"), "Imperfect verb", "فعل مضارع"),
+#     Symbol("asp_c") => Imperative(Symbol("c", "Imperative or command verb", "فعل أمر"))
+# )
 const VERB_MOODS = Dict(
     Symbol("IND") => Indicative(),
     Symbol("SUBJ") => Subjunctive(),
@@ -30,7 +30,7 @@ const VERB_VOICES = Dict(
 )
 const CAMEL_VERB_VOICES = Dict(
     Symbol("vox_a") => Active(Symbol("a"), "Active voice (default)", "مبني للمعلوم"),
-    Symbol("vox_p") => Passive(Symbol("p"), "Passive voice", "مبني للمجهول")
+    Symbol("vox_p") => Passive(Symbol("p"), "Passive voice", "مبني للمجهول"),
     Symbol("vox_u") => Undefined()
 )
 const VERB_FORMS = Dict(
@@ -55,7 +55,7 @@ const NOMINAL_CASES = Dict(
 const CAMEL_NOMINAL_CASES = Dict(
     Symbol("cas_n") => Nominative(Symbol("n"), "Nominative case", "مرفوع"),
     Symbol("cas_a") => Accusative(Symbol("a"), "Accusative case", "منصوب"),
-    Symbol("cas_g") => Genetive(Symbol("g"), "Genetive case", "مجرور")
+    Symbol("cas_g") => Genetive(Symbol("g"), "Genetive case", "مجرور"),
     Symbol("cas_u") => Undefined()
 )
 const NOMINAL_STATES = Dict(
@@ -268,13 +268,13 @@ const SIMPLE_ENCODING = Dict(
     Symbol(Char(0x06EC)) => Symbol("RoundedHighStopWithFilledCenter"),
     Symbol(Char(0x06ED)) => Symbol("SmallLowMeem")
 );
-const ALPHABET_TYPES = Dict(
+const ORTHOGRAPHY_TYPES = Dict(
     Symbol(Char(0x0621)) => Hamza,
-    Symbol(Char(0x0622)) => Alif,
-    Symbol(Char(0x0623)) => Hamza,
-    Symbol(Char(0x0624)) => Hamza,
-    Symbol(Char(0x0625)) => Hamza,
-    Symbol(Char(0x0626)) => Hamza,
+    Symbol(Char(0x0622)) => Union{Alif,Maddah},
+    Symbol(Char(0x0623)) => Union{Alif,HamzaAbove},
+    Symbol(Char(0x0624)) => Union{Waw,HamzaAbove},
+    Symbol(Char(0x0625)) => Union{Alif,HamzaBelow},
+    Symbol(Char(0x0626)) => Union{Ya,HamzaAbove},
     Symbol(Char(0x0627)) => Alif,
     Symbol(Char(0x0628)) => Ba,
     Symbol(Char(0x0629)) => Ta,
@@ -304,32 +304,32 @@ const ALPHABET_TYPES = Dict(
     Symbol(Char(0x0646)) => Noon,
     Symbol(Char(0x0647)) => Ha,
     Symbol(Char(0x0648)) => Waw,
-    Symbol(Char(0x0649)) => Ya, # alif maksura
+    Symbol(Char(0x0649)) => AlifMaksurah,
     Symbol(Char(0x064A)) => Ya,
-    Symbol(Char(0x064B)) => Symbol("Fathatan"),
-    Symbol(Char(0x064C)) => Symbol("Dammatan"),
-    Symbol(Char(0x064D)) => Symbol("Kasratan"),
-    Symbol(Char(0x064E)) => Symbol("Fatha"),
-    Symbol(Char(0x064F)) => Symbol("Damma"),
-    Symbol(Char(0x0650)) => Symbol("Kasra"),
-    Symbol(Char(0x0651)) => Symbol("Shadda"),
-    Symbol(Char(0x0652)) => Symbol("Sukun"),
-    Symbol(Char(0x0653)) => Symbol("Maddah"),
-    Symbol(Char(0x0654)) => Symbol("HamzaAbove"),
-    Symbol(Char(0x0670)) => Symbol("AlifKhanjareeya"),
-    Symbol(Char(0x0671)) => Symbol("HamzatWasl"),
-    Symbol(Char(0x06DC)) => Symbol("SmallHighSeen"),
-    Symbol(Char(0x06DF)) => Symbol("SmallHighRoundedZero"),
-    Symbol(Char(0x06E0)) => Symbol("SmallHighUprightRectangularZero"),
-    Symbol(Char(0x06E2)) => Symbol("SmallHighMeemIsolatedForm"),
-    Symbol(Char(0x06E3)) => Symbol("SmallLowSeen"),
-    Symbol(Char(0x06E5)) => Symbol("SmallWaw"),
-    Symbol(Char(0x06E6)) => Symbol("SmallYa"),
-    Symbol(Char(0x06E8)) => Symbol("SmallHighNoon"),
-    Symbol(Char(0x06EA)) => Symbol("EmptyCenterLowStop"),
-    Symbol(Char(0x06EB)) => Symbol("EmptyCenterHighStop"),
-    Symbol(Char(0x06EC)) => Symbol("RoundedHighStopWithFilledCenter"),
-    Symbol(Char(0x06ED)) => Symbol("SmallLowMeem")
+    Symbol(Char(0x064B)) => Fathatan,
+    Symbol(Char(0x064C)) => Dammatan,
+    Symbol(Char(0x064D)) => Kasratan,
+    Symbol(Char(0x064E)) => Fatha,
+    Symbol(Char(0x064F)) => Damma,
+    Symbol(Char(0x0650)) => Kasra,
+    Symbol(Char(0x0651)) => Shadda,
+    Symbol(Char(0x0652)) => Sukun,
+    Symbol(Char(0x0653)) => Maddah,
+    Symbol(Char(0x0654)) => Hamza,
+    Symbol(Char(0x0670)) => AlifKhanjareeya,
+    Symbol(Char(0x0671)) => Union{Alif,HamzatWasl},
+    Symbol(Char(0x06DC)) => SmallHighSeen,
+    Symbol(Char(0x06DF)) => SmallHighRoundedZero,
+    Symbol(Char(0x06E0)) => SmallHighUprightRectangularZero,
+    Symbol(Char(0x06E2)) => SmallHighMeemIsolatedForm,
+    Symbol(Char(0x06E3)) => SmallLowSeen,
+    Symbol(Char(0x06E5)) => SmallWaw,
+    Symbol(Char(0x06E6)) => SmallYa,
+    Symbol(Char(0x06E8)) => SmallHighNoon,
+    Symbol(Char(0x06EA)) => EmptyCenterLowStop,
+    Symbol(Char(0x06EB)) => EmptyCenterHighStop,
+    Symbol(Char(0x06EC)) => RoundedHighStopWithFilledCenter,
+    Symbol(Char(0x06ED)) => SmallLowMeem
 );
 const BW_ENCODING = Dict(
     Symbol(Char(0x0621)) => Symbol('\''),
@@ -393,13 +393,7 @@ const BW_ENCODING = Dict(
     Symbol(Char(0x06EB)) => Symbol('+'),
     Symbol(Char(0x06EC)) => Symbol('%'),
     Symbol(Char(0x06ED)) => Symbol(']')
-    # Symbol(Char(0xFDFA)) => Symbol('θ'),
-    # Symbol(Char(0xFDFB)) => Symbol('ϕ'),
-    # Symbol(Char(0xFDFD)) => Symbol('Ω')
 );
-
-
-
 
 const AR_DIACS_REGEX = Regex(
     string(
