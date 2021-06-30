@@ -1,4 +1,4 @@
-Orthography Analysis
+Orthographical Analysis
 =============
 All Arabic characters and diacritics and other characters used in Arabic texts, such as the Qur'an are all encoded as `struct`s or types. These types have properties that can be used for Orthography analysis. These properties are the vocal and numeral associated with each of the character.
 
@@ -23,6 +23,11 @@ Finally, we can compute the numerals of the parsed tokens as follows:
 numeral(arb_parsed2[1])
 numeral(arb_parsed2[2])
 numeral(arb_parsed2[3])
+```
+```@repl abc2
+isfeat(arb_parsed2[1], AbstractLunar)
+arb_parsed2[1][isfeat(arb_parsed2[1], AbstractLunar)]
+isfeat.(arb_parsed2, AbstractLunar)
 ```
 ## Vocals
 ```@repl abc2

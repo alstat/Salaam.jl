@@ -97,7 +97,7 @@ macro data(expr)
     return esc(Meta.parse(string(expr) * ".data"))
 end
 
-function isfeat(x::Orthography, y::Type{AbstractLunar})
+function isfeat(x::Orthography, y::Type{<:AbstractConsonant})
     return x.data .<: y
 end
 
