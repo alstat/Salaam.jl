@@ -11,6 +11,7 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Basic Utilities" => "man/basic_utilities.md",
+        "Orthography Analysis" => "man/orthography.md",
         "Disambiguation" => "man/disambiguation.md",
         "Morphological Analysis" => "man/morphology.md",
         "Morphological Tokenizer" => "man/tokenizer.md",

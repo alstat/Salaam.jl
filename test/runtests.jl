@@ -137,13 +137,20 @@ a = parse.(Orthography, tokenize(ar_basmala))
 # @info Type{Ba} <: AbstractCharacter
 # @info Type{Ba} <: Type{AbstractCharacter}
 @info a
-@info typeof(a)
-@info a[1].data[1]
-@info vocal(a[1].data[1])
+# @info typeof(a)
+# @info a[1].data[1]
+# @info vocal(a[1].data[1])
+@info a[1]
+@info a[1].data
+@info vocal(a[1].data)
 @info vocal(a[1])
-@info numeral(a[1].data[1])
-@info numeral(a[1])
+# @info numeral(a[2].data[1])
+# @info numeral(a[2])
 
+@info "simple encoding"
+@info parse(SimpleEncoding, ar_basmala)
+@info "types lunar"
+@info Union{Alif,Maddah} <: Union{AbstractLunar}
 @info "trying out camel"
 disambig = Disambiguator()
 dis = predict(disambig, split(dediac(ar_basmala)))

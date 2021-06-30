@@ -86,3 +86,26 @@ numeral(x::Orthography) = numeral.(x.data)
 @consonant Ha AbstractLunar 5 :guttural
 @consonant Hamza AbstractLunar 1 :soft
 @consonant Ya AbstractLunar 10 :soft
+@consonant AlifMaddah AbstractLunar 1 :soft
+@consonant AlifHamzaAbove AbstractLunar 1 :soft
+@consonant AlifHamzaBelow AbstractLunar 1 :soft
+@consonant AlifHamzatWasl AbstractLunar 1 :soft
+@consonant WawHamzaAbove AbstractLunar 6 :soft
+@consonant YaHamzaAbove AbstractLunar 10 :soft
+
+# struct WawHamzaAbove end
+# struct YaHamzaAbove end
+
+# vocal(::Type{AlifMaddah}) = :soft
+# vocal(::Type{AlifHamzaAbove}) = :soft
+# vocal(::Type{AlifHamzaBelow}) = :soft
+# vocal(::Type{AlifHamzatWasl}) = :soft
+# vocal(::Type{WawHamzaAbove}) = (:labial, :soft)
+# vocal(::Type{YaHamzaAbove}) = :soft
+
+# numeral(::Type{AlifMaddah}) = 1
+# numeral(::Type{AlifHamzaAbove}) = 1
+# numeral(::Type{AlifHamzaBelow}) = 1
+# numeral(::Type{AlifHamzatWasl}) = 1
+# numeral(::Type{WawHamzaAbove}) = (6, 1)
+# numeral(::Type{YaHamzaAbove}) = (10, 1)
