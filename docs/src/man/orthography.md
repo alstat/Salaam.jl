@@ -32,3 +32,6 @@ vocal(arb_parsed2[3])
 ```
 
 ## Simple Encoding
+```@repl abc2
+parse(SimpleEncoding, ar_basmala)
+```

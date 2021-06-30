@@ -93,19 +93,14 @@ numeral(x::Orthography) = numeral.(x.data)
 @consonant WawHamzaAbove AbstractLunar 6 :soft
 @consonant YaHamzaAbove AbstractLunar 10 :soft
 
-# struct WawHamzaAbove end
-# struct YaHamzaAbove end
+macro data(expr)
+    return esc(Meta.parse(string(expr) * ".data"))
+end
 
-# vocal(::Type{AlifMaddah}) = :soft
-# vocal(::Type{AlifHamzaAbove}) = :soft
-# vocal(::Type{AlifHamzaBelow}) = :soft
-# vocal(::Type{AlifHamzatWasl}) = :soft
-# vocal(::Type{WawHamzaAbove}) = (:labial, :soft)
-# vocal(::Type{YaHamzaAbove}) = :soft
+function isfeat(x::Orthography, y::Type{AbstractLunar})
+    return x.data .<: y
+end
 
-# numeral(::Type{AlifMaddah}) = 1
-# numeral(::Type{AlifHamzaAbove}) = 1
-# numeral(::Type{AlifHamzaBelow}) = 1
-# numeral(::Type{AlifHamzatWasl}) = 1
-# numeral(::Type{WawHamzaAbove}) = (6, 1)
-# numeral(::Type{YaHamzaAbove}) = (10, 1)
+function Base.getindex(x::Orthography, i::BitVector)
+    return x.data[i]
+end

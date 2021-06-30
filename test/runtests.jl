@@ -140,10 +140,8 @@ a = parse.(Orthography, tokenize(ar_basmala))
 # @info typeof(a)
 # @info a[1].data[1]
 # @info vocal(a[1].data[1])
-@info a[1]
-@info a[1].data
-@info vocal(a[1].data)
-@info vocal(a[1])
+@info a[2]
+@info vocal(a[2])
 # @info numeral(a[2].data[1])
 # @info numeral(a[2])
 
