@@ -4,7 +4,7 @@ function camel_analyzer()
 end
 
 struct Analysis
-    data::Dict{Any,Any}
+    data::Union{Vector{Dict{Any,Any}},Dict{Any,Any}}
 end
 
 struct Analyzer
