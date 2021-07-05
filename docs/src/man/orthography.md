@@ -28,6 +28,7 @@ numeral(arb_parsed2[3])
 isfeat(arb_parsed2[1], AbstractLunar)
 arb_parsed2[1][isfeat(arb_parsed2[1], AbstractLunar)]
 isfeat.(arb_parsed2, AbstractLunar)
+isfeat.(arb_parsed2, AbstractSolar)
 ```
 ## Vocals
 ```@repl abc2

@@ -23,8 +23,6 @@ struct Shadda <: AbstractDiacritic end
 struct Sukun <: AbstractDiacritic end
 struct Maddah <: AbstractDiacritic end 
 struct HamzaAbove <: AbstractDiacritic end
-struct HamzaBelow <: AbstractDiacritic end
-struct HamzatWasl <: AbstractDiacritic end
 struct AlifKhanjareeya <: AbstractDiacritic end
 
 struct SmallHighSeen <: AbstractCharacter end
