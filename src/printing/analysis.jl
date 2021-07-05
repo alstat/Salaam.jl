@@ -1,4 +1,4 @@
-function Base.show(io::IO, t::Analysis)
+function Base.show(io::IO, ::MIME"text/plain", t::Analysis)
     asp = String[]
     prc1 = String[]
     cas = String[]
@@ -29,5 +29,5 @@ function Base.show(io::IO, t::Analysis)
     end
 
     header = ["Diac", "Lemma", "Root", "POS", "Gender", "Aspect", "Case", "Voice", "Mood", "State", "Person", "Prep. PC", "Enclitic"]
-    pretty_table(hcat(diac, lex, rot, pos, gen, asp, cas, vox, mod, stt, per, prc1, enc0); header = header, tf = PrettyTables.tf_compact)
+    Base.show(io, "text/plain", pretty_table(hcat(diac, lex, rot, pos, gen, asp, cas, vox, mod, stt, per, prc1, enc0); header = header, tf = PrettyTables.tf_compact))
 end
