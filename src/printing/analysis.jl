@@ -28,7 +28,7 @@ function Base.show(io::IO, t::Analysis)
         push!(stt, i["stt"])
     end
 
-    header = ["Diac", "Root", "Lemma", "POS", "Gender", "Aspect", "Case", "Voice", "Mood", "State", "Person", "Prep. PC", "Enclitic"]
+    header = ["Diac", "POS", "Root", "Gender", "Lemma", "Aspect", "Case", "Voice", "Mood", "State", "Person", "Prep. PC", "Enclitic"]
     println(io, " «Call .data attribute for more features»")
-    pretty_table(io, hcat(diac, root, lex, pos, gen, asp, cas, vox, mod, stt, per, prc1, enc0); header = header, tf = PrettyTables.tf_compact)
+    pretty_table(io, hcat(diac, pos, root, gen, lex, asp, cas, vox, mod, stt, per, prc1, enc0); header = header, tf = PrettyTables.tf_compact)
 end
