@@ -157,7 +157,7 @@ a = parse.(Orthography, tokenize(ar_basmala))
 @info "Analyzer"
 analyze = Analyzer()
 aa = analyze("موظف")
-println(aa)
+@info aa
 # @info "Generator"
 # generate = Generator()
 # lemma = "مُوَظَّف"
