@@ -141,60 +141,60 @@ a = parse.(Orthography, tokenize(ar_basmala))
 # @info a[1].data[1]
 # @info vocal(a[1].data[1])
 @info a[2]
-@info vocal(a[2])
+# @info vocal(a[2])
 # @info numeral(a[2].data[1])
 # @info numeral(a[2])
 
-@info "simple encoding"
-@info parse(SimpleEncoding, ar_basmala)
-@info "types lunar"
-@info Union{Alif,Maddah} <: Union{AbstractLunar}
-@info "trying out camel"
-disambig = Disambiguator()
-dis = predict(disambig, split(dediac(ar_basmala)))
-@test join([d[2][1][2]["diac"] for d in dis], " ") === "بِسَمّ اللّٰه الرَحْمٰن الرَحِيم"
+# @info "simple encoding"
+# @info parse(SimpleEncoding, ar_basmala)
+# @info "types lunar"
+# @info Union{Alif,Maddah} <: Union{AbstractLunar}
+# @info "trying out camel"
+# disambig = Disambiguator()
+# dis = predict(disambig, split(dediac(ar_basmala)))
+# @test join([d[2][1][2]["diac"] for d in dis], " ") === "بِسَمّ اللّٰه الرَحْمٰن الرَحِيم"
 
 @info "Analyzer"
 analyze = Analyzer()
 @info analyze("موظف")
 
-@info "Generator"
-generate = Generator()
-lemma = "مُوَظَّف"
-features = Dict(
-    "pos" => "noun",
-    "gen" => "m",
-    "num" => "p"
-)
-@info generate(lemma, features)
+# @info "Generator"
+# generate = Generator()
+# lemma = "مُوَظَّف"
+# features = Dict(
+#     "pos" => "noun",
+#     "gen" => "m",
+#     "num" => "p"
+# )
+# @info generate(lemma, features)
 
-@info "Reinflector"
-reinflect = Reinflector()
-word = "شوارع"
-features = Dict(
-    "num" => "d",
-    "prc1" => "bi_prep"
-)
+# @info "Reinflector"
+# reinflect = Reinflector()
+# word = "شوارع"
+# features = Dict(
+#     "num" => "d",
+#     "prc1" => "bi_prep"
+# )
 
-@info reinflect(word, features)
+# @info reinflect(word, features)
 
-@info "Tagger"
-sentence11 = tokenize("نجح بايدن في الانتخابات")
-tag = Tagger()
-@info tag(sentence11)
+# @info "Tagger"
+# sentence11 = tokenize("نجح بايدن في الانتخابات")
+# tag = Tagger()
+# @info tag(sentence11)
 
-@info "Morphological Tokenizer"
-sentence12 = tokenize("فتنفست الصعداء")
-morph_tokenize = MorphologicalTokenizer()
-@info morph_tokenize(sentence12)
+# @info "Morphological Tokenizer"
+# sentence12 = tokenize("فتنفست الصعداء")
+# morph_tokenize = MorphologicalTokenizer()
+# @info morph_tokenize(sentence12)
 
-# @info "Dialect Identifier"
-# sentences13 = [
-#     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
-#     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
-# ]
+# # @info "Dialect Identifier"
+# # sentences13 = [
+# #     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
+# #     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
+# # ]
 
-# did = DialectIdentifier()
+# # did = DialectIdentifier()
 
-# @info predict(did, sentences13)
+# # @info predict(did, sentences13)
 

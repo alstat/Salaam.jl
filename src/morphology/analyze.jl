@@ -5,6 +5,7 @@ end
 
 struct Analysis
     data::Union{Vector{Dict{Any,Any}},Dict{Any,Any}}
+    text::String
 end
 
 struct Analyzer
@@ -22,5 +23,5 @@ function Analyzer(db::Symbol)
 end
 
 function (a::Analyzer)(s::String)
-    return Analysis(camel_analyzer()(a.db).analyze(s))
+    return Analysis(camel_analyzer()(a.db).analyze(s), s)
 end

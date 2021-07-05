@@ -1,4 +1,5 @@
 module Salaam
+using PrettyTables
 using PyCall: pyimport, PyObject
 
 abstract type AbstractModel end
@@ -21,6 +22,7 @@ include("tagger/tag.jl")
 include("tokenizers/tokenize.jl")
 include("dialectid/identify_dialect.jl")
 include("data/data.jl")
+include("printing/analysis.jl")
 
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
 

@@ -1,13 +1,33 @@
 function Base.show(io::IO, t::Analysis)
-    println(io, "Analysis: ")
-    j = 1
+    asp = String[]
+    prc1 = String[]
+    cas = String[]
+    lex = String[]
+    mod = String[]
+    vox = String[]
+    enc0 = String[]
+    diac = String[]
+    gen = String[]
+    pos = String[]
+    rot = String[]
+    per = String[]
+    stt = String[]
     for i in t.data
-        if j === length(t.data)
-            println(io, " └ root: ", i["root"], "; gloss: ", i["gloss"], "; pos: ", i["pos"])
-            println(io, "call .data attribute for more.")
-        else 
-            print(io, " ├ root: ", i["root"], "; gloss: ", i["gloss"], "; pos: ", i["pos"])
-        end
-        j += 1
+        push!(diac, i["diac"])
+        push!(pos, i["pos"])
+        push!(gen, i["gen"])
+        push!(lex, i["lex"])
+        push!(asp, i["asp"])
+        push!(mod, i["mod"])
+        push!(prc1, i["prc1"])
+        push!(cas, i["cas"])
+        push!(per, i["per"])
+        push!(vox, i["vox"])
+        push!(rot, i["root"])
+        push!(enc0, i["enc0"])
+        push!(stt, i["stt"])
     end
+
+    header = ["Diac", "Lemma", "Root", "POS", "Gender", "Aspect", "Case", "Voice", "Mood", "State", "Person", "Prep. PC", "Enclitic"]
+    println(io, pretty_table(hcat(diac, lex, rot, pos, gen, asp, cas, vox, mod, stt, per, prc1, enc0); header = header))
 end
