@@ -3,6 +3,10 @@ function camel_analyzer()
     return analyzer.Analyzer
 end
 
+struct Analysis
+    data::Dict{Any,Any}
+end
+
 struct Analyzer
     db::PyObject
 end
@@ -18,5 +22,5 @@ function Analyzer(db::Symbol)
 end
 
 function (a::Analyzer)(s::String)
-    return camel_analyzer()(a.db).analyze(s)
+    return Analysis(camel_analyzer()(a.db).analyze(s))
 end
