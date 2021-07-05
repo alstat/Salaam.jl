@@ -9,7 +9,7 @@ function Base.show(io::IO, t::Analysis)
     diac = String[]
     gen = String[]
     pos = String[]
-    rot = String[]
+    root = String[]
     per = String[]
     stt = String[]
     for i in t.data
@@ -23,12 +23,12 @@ function Base.show(io::IO, t::Analysis)
         push!(cas, i["cas"])
         push!(per, i["per"])
         push!(vox, i["vox"])
-        push!(rot, i["root"])
+        push!(root, i["root"])
         push!(enc0, i["enc0"])
         push!(stt, i["stt"])
     end
 
     header = ["Diac", "Lemma", "Root", "POS", "Gender", "Aspect", "Case", "Voice", "Mood", "State", "Person", "Prep. PC", "Enclitic"]
     println(io, " «Call .data attribute for more features»")
-    pretty_table(io, hcat(diac, lex, rot, pos, gen, asp, cas, vox, mod, stt, per, prc1, enc0); header = header, tf = PrettyTables.tf_compact)
+    pretty_table(io, hcat(diac, lex, root, pos, gen, asp, cas, vox, mod, stt, per, prc1, enc0); header = header, tf = PrettyTables.tf_compact)
 end
