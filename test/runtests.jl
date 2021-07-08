@@ -159,24 +159,24 @@ analyze = Analyzer()
 aa = analyze("موظف")
 @info aa
 # @info "Generator"
-# generate = Generator()
-# lemma = "مُوَظَّف"
-# features = Dict(
-#     "pos" => "noun",
-#     "gen" => "m",
-#     "num" => "p"
-# )
-# @info generate(lemma, features)
+generate = Generator()
+lemma = "مُوَظَّف"
+features = Dict(
+    "pos" => "noun",
+    "gen" => "m",
+    "num" => "p"
+)
+@info generate(lemma, features)
 
-# @info "Reinflector"
-# reinflect = Reinflector()
-# word = "شوارع"
-# features = Dict(
-#     "num" => "d",
-#     "prc1" => "bi_prep"
-# )
+@info "Reinflector"
+reinflect = Reinflector()
+word = "شوارع"
+features = Dict(
+    "num" => "d",
+    "prc1" => "bi_prep"
+)
 
-# @info reinflect(word, features)
+@info reinflect(word, features)
 
 # @info "Tagger"
 # sentence11 = tokenize("نجح بايدن في الانتخابات")

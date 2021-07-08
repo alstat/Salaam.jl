@@ -1,38 +1,61 @@
 const DERIVED_NOUNS = Dict(
     Symbol("ACT PCPL") => ActiveParticle(),
     Symbol("PASS PCPL") => PassiveParticle(),
-    Symbol("VN") => VerbalNoun()
+    :VN => VerbalNoun()
 )
 const VERB_ASPECTS = Dict(
-    Symbol("PERF") => Perfect(),
-    Symbol("IMPF") => Imperfect(),
-    Symbol("IMPV") => Imperative()
+    :PERF => Perfect(),
+    :IMPF => Imperfect(),
+    :IMPV => Imperative()
 )
 # const CAMEL_VERB_ASPECTS = Dict(
 #     Symbol("asp_p") => Perfect(Symbol("p"), "Perfect verb", "فعل ماض"),
 #     Symbol("asp_i") => Imperfect(Symbol("i"), "Imperfect verb", "فعل مضارع"),
 #     Symbol("asp_c") => Imperative(Symbol("c", "Imperative or command verb", "فعل أمر"))
 # )
+
+# -----------------------------------------
+# Verb Moods
+# -----------------------------------------
 const VERB_MOODS = Dict(
-    Symbol("IND") => Indicative(),
-    Symbol("SUBJ") => Subjunctive(),
-    Symbol("JUS") => Jussive()
+    :IND => Indicative(),
+    :SUBJ => Subjunctive(),
+    :JUS => Jussive()
 )
 const CAMEL_VERB_MOODS = Dict(
-    Symbol("mod_i") => Indicative(Symbol("i"), "Indicative mood (default)", "مرفوع"),
-    Symbol("mod_s") => Subjunctive(Symbol("s"), "Subjunctive mood", "منصوب"),
-    Symbol("mod_j") => Jussive(Symbol("j"), "Jussive mood", "مجزوم"),
-    Symbol("mod_u") => Undefined()
+    :mod_i => Indicative(Symbol("i"), "Indicative mood (default)", "مرفوع"),
+    :mod_s => Subjunctive(Symbol("s"), "Subjunctive mood", "منصوب"),
+    :mod_j => Jussive(Symbol("j"), "Jussive mood", "مجزوم"),
+    :mod_u => Undefined()
 )
+const CAMEL_VERB_MOODS_2 = Dict(
+    :Indicative => "mod_i", 
+    :Subjunctive => "mod_s",
+    :Jussive => "mod_j",
+    :Undefined => "mod_u"
+)
+
+# -----------------------------------------
+# Verb Voices
+# -----------------------------------------
 const VERB_VOICES = Dict(
-    Symbol("ACT") => Active(),
-    Symbol("PASS") => Passive()
+    :ACT => Active(),
+    :PASS => Passive()
 )
 const CAMEL_VERB_VOICES = Dict(
-    Symbol("vox_a") => Active(Symbol("a"), "Active voice (default)", "مبني للمعلوم"),
-    Symbol("vox_p") => Passive(Symbol("p"), "Passive voice", "مبني للمجهول"),
-    Symbol("vox_u") => Undefined()
+    :vox_a => Active(Symbol("a"), "Active voice (default)", "مبني للمعلوم"),
+    :vox_p => Passive(Symbol("p"), "Passive voice", "مبني للمجهول"),
+    :vox_u => Undefined()
 )
+const CAMEL_VERB_VOICES_2 = Dict(
+    :Active => "vox_a",
+    :Passive => "vox_p",
+    :Undefined => "vox_u"
+)
+
+# -----------------------------------------
+# Verb Forms
+# -----------------------------------------
 const VERB_FORMS = Dict(
     Symbol("(I)") => VerbFormI(),
     Symbol("(II)") => VerbFormII(),
@@ -47,96 +70,199 @@ const VERB_FORMS = Dict(
     Symbol("(XI)") => VerbFormXI(),
     Symbol("(XII)") => VerbFormXII()
 )
+
+# -----------------------------------------
+# Nominal Cases
+# -----------------------------------------
 const NOMINAL_CASES = Dict(
-    Symbol("NOM") => Nominative(),
-    Symbol("ACCC") => Accusative(Symbol("ACC"), "Accusative case", "منصوب"),
-    Symbol("GEN") => Genetive()
+    :NOM => Nominative(),
+    :ACCC => Accusative(Symbol("ACC"), "Accusative case", "منصوب"),
+    :GEN => Genetive()
 )
 const CAMEL_NOMINAL_CASES = Dict(
-    Symbol("cas_n") => Nominative(Symbol("n"), "Nominative case", "مرفوع"),
-    Symbol("cas_a") => Accusative(Symbol("a"), "Accusative case", "منصوب"),
-    Symbol("cas_g") => Genetive(Symbol("g"), "Genetive case", "مجرور"),
-    Symbol("cas_u") => Undefined()
+    :cas_n => Nominative(Symbol("n"), "Nominative case", "مرفوع"),
+    :cas_a => Accusative(Symbol("a"), "Accusative case", "منصوب"),
+    :cas_g => Genetive(Symbol("g"), "Genetive case", "مجرور"),
+    :cas_u => Undefined()
 )
+const CAMEL_NOMINAL_CASES_2 = Dict(
+    :Nominative => "cas_n",
+    :Accusative => "cas_a",
+    :Genetive => "cas_g",
+    :Undefined => "cas_u"
+)
+
+# -----------------------------------------
+# Nominal States
+# -----------------------------------------
 const NOMINAL_STATES = Dict(
-    Symbol("DEF") => Definite(),
-    Symbol("INDEF") => Indefinite()
+    :DEF => Definite(),
+    :INDEF => Indefinite()
 )
 const CAMEL_NOMINAL_STATES = Dict(
-    Symbol("stt_d") => Definite(Symbol("d"), "Definite state", "معرفة"),
-    Symbol("stt_i") => Indefinite(Symbol("i"), "Indefinite state", "نكرة"),
-    Symbol("stt_c") => Construct(Symbol("c"), "Construct/Poss/Idafa", ""),
-    Symbol("stt_u") => Undefined()
+    :stt_d => Definite(Symbol("d"), "Definite state", "معرفة"),
+    :stt_i => Indefinite(Symbol("i"), "Indefinite state", "نكرة"),
+    :stt_c => Construct(Symbol("c"), "Construct/Poss/Idafa", ""),
+    :stt_u => Undefined()
 )
+const CAMEL_NOMINAL_STATES_2 = Dict(
+    :Definite => "stt_d",
+    :Indefinite => "stt_i",
+    :Construct => "stt_c",
+    :Undefined => "stt_u"
+)
+
+# -----------------------------------------
+# Nouns
+# -----------------------------------------
 const NOUNS = Dict(
-    Symbol("N") => Noun(),
-    Symbol("PN") => ProperNoun()
+    :N => Noun(),
+    :PN => ProperNoun()
 )
 const CAMEL_NOUNS = Dict(
-    Symbol("pos_n") => Noun(Symbol("n"), "Noun", "اسم"),
-    Symbol("pos_noun_prop") => ProperNoun(Symbol("noun_prop"), "Proper noun", "اسم علم"),
-    Symbol("pos_noun_num") => Numeral(Symbol("noun_num"), "Number noun", ""),
-    Symbol("pos_noun_quant") => Quantity(Symbol("noun_quant"), "Quantity noun", "")
+    :pos_n => Noun(Symbol("n"), "Noun", "اسم"),
+    :pos_noun_prop => ProperNoun(Symbol("noun_prop"), "Proper noun", "اسم علم"),
+    :pos_noun_num => Numeral(Symbol("noun_num"), "Number noun", ""),
+    :pos_noun_quant => Quantity(Symbol("noun_quant"), "Quantity noun", "")
 )
+const CAMEL_NOUNS_2 = Dict(
+    :Noun => "pos_n",
+    :ProperNoun => "pos_noun_prop",
+    :Numeral => "pos_noun_num",
+    :Quantity => "pos_noun_quant"
+)
+
+# -----------------------------------------
+# Derived Nominals
+# -----------------------------------------
 const DERIVED_NOMINALS = Dict(
-    Symbol("ADJ") => Adjective(),
-    Symbol("IMPN") => ImperativeVerbalNoun()
+    :ADJ => Adjective(),
+    :IMPN => ImperativeVerbalNoun()
 )
 const CAMEL_DERIVED_NOMINALS = Dict(
-    Symbol("pos_adj") => Adjective(Symbol("adj"), "Adjective", "صفة"),
-    Symbol("pos_adj_comp") => Comparative(Symbol("adj_comp"), "Comparative adjective", ""),
-    Symbol("pos_adj_num") => Numerical(Symbol("adj_num"), "Numerical adjective", ""),
+    :pos_adj => Adjective(Symbol("adj"), "Adjective", "صفة"),
+    :pos_adj_comp => Comparative(Symbol("adj_comp"), "Comparative adjective", ""),
+    :pos_adj_num => Numerical(Symbol("adj_num"), "Numerical adjective", ""),
 )
+const CAMEL_DERIVED_NOMINALS_2 = Dict(
+    :Adjective => "pos_adj",
+    :Comparative => "pos_adj_comp",
+    :Numerical => "pos_adj_num"
+)
+
+# -----------------------------------------
+# Pronouns
+# -----------------------------------------
 const PRONOUNS = Dict(
-    Symbol("PRON") => Personal(),
-    Symbol("DEM") => Demonstrative(),
-    Symbol("REL") => Relative()
+    :PRON => Personal(),
+    :DEM => Demonstrative(),
+    :REL => Relative()
 )
 const CAMEL_PRONOUNS = Dict(
-    Symbol("pos_pron") => Personal(Symbol("pron"), "Personal pronoun", "ضمير"),
-    Symbol("pos_pron_dem") => Demonstrative(Symbol("pron_dem"), "Demonstrative pronoun", "اسم اشارة"),
-    Symbol("pos_pron_rel") => Relative(Symbol("pron_rel"), "Relative pronoun", "اسم موصول"),
-    Symbol("pos_pron_interrog") => Interrogative(Symbol("pron_interrog"), "Interrogative pronoun", ""),
-    Symbol("pos_pron_exclam") => Exclamation(Symbol("pron_exclam"), "Exclamation pronoun", "")
+    :pos_pron => Personal(Symbol("pron"), "Personal pronoun", "ضمير"),
+    :pos_pron_dem => Demonstrative(Symbol("pron_dem"), "Demonstrative pronoun", "اسم اشارة"),
+    :pos_pron_rel => Relative(Symbol("pron_rel"), "Relative pronoun", "اسم موصول"),
+    :pos_pron_interrog => Interrogative(Symbol("pron_interrog"), "Interrogative pronoun", ""),
+    :pos_pron_exclam => Exclamation(Symbol("pron_exclam"), "Exclamation pronoun", "")
 )
+const CAMEL_PRONOUNS_2 = Dict(
+    :Personal => "pos_pron",
+    :Demonstrative => "pos_pron_dem",
+    :Relative => "pos_pron_rel",
+    :Interrogative => "pos_pron_interrog",
+    :Exclamation => "pos_pron_exclam"
+)
+
+# -----------------------------------------
+# Adverbs
+# -----------------------------------------
 const ADVERBS = Dict(
-    Symbol("T") => Time(),
-    Symbol("LOC") => Location()
+    :T => Time(),
+    :LOC => Location()
 )
 const CAMEL_ADVERBS = Dict(
-    Symbol("pos_adv") => AbstractAdverb,
-    Symbol("pos_adv_interrog") => InterrogativeAdv(Symbol("adv_interrog"), "Interrogative adverb", ""),
-    Symbol("pos_adv_rel") => RelativeAdv(Symbol("adv_rel"), "Relative adverb", ""),
+    :pos_adv => AbstractAdverb,
+    :pos_adv_interrog => InterrogativeAdv(Symbol("adv_interrog"), "Interrogative adverb", ""),
+    :pos_adv_rel => RelativeAdv(Symbol("adv_rel"), "Relative adverb", ""),
 )
+const CAMEL_ADVERBS_2 = Dict(
+    :AbstractAdverb => "pos_adv",
+    :InterrogativeAdv => "pos_adv_interrog",
+    :RelativeAdv => "pos_adv_rel"
+)
+
+# -----------------------------------------
+# Prepositions
+# -----------------------------------------
 const PREPOSITIONS = Dict(
-    Symbol("P") => Preposition(),
-    Symbol("Al+") => Preposition(Symbol("P"), "Determiner prefix ('the')", "حرف جر"),
-    Symbol("bi+") => Preposition(Symbol("P"), "Preposition prefix ('by', 'with', 'in')", "حرف جر"),
-    Symbol("ka+") => Preposition(Symbol("P"), "Preposition prefix ('like' or 'thus')", "حرف جر"),
-    Symbol("ta+") => Preposition(Symbol("P"), "particle of oath prefix used as a preposition ('by Allah')", "حرف جر"),
-    Symbol("w:P+") => Preposition(Symbol("P"), "Particle of oath prefix used as a preposition ('by the pen')", "حرف جر"),
-    Symbol("l:P+") => Preposition(Symbol("P"), "Lam as a prefixed preposition", "حرف جر")
+    :P => Preposition(),
+    Symbol("Al+") => ALDeterminer(Symbol("P"), "Determiner prefix ('the')", "حرف جر"),
+    Symbol("bi+") => BiPrep(Symbol("P"), "Preposition prefix ('by', 'with', 'in')", "حرف جر"),
+    Symbol("ka+") => KaPrep(Symbol("P"), "Preposition prefix ('like' or 'thus')", "حرف جر"),
+    Symbol("ta+") => TaPrep(Symbol("P"), "particle of oath prefix used as a preposition ('by Allah')", "حرف جر"),
+    Symbol("w:P+") => WaPrep(Symbol("P"), "Particle of oath prefix used as a preposition ('by the pen')", "حرف جر"),
+    Symbol("l:P+") => LaPrep(Symbol("P"), "Lam as a prefixed preposition", "حرف جر")
 )
 const CAMEL_PREPOSITIONS = Dict(
-    Symbol("prc1") => Preposition(Symbol("prc1"), "Preposition", "حرف جر"),
-    Symbol("Al+") => Preposition(Symbol("P"), "Determiner prefix ('the')", "حرف جر"),
-    Symbol("bi+") => Preposition(Symbol("P"), "Preposition prefix ('by', 'with', 'in')", "حرف جر"),
-    Symbol("ka+") => Preposition(Symbol("P"), "Preposition prefix ('like' or 'thus')", "حرف جر"),
-    Symbol("ta+") => Preposition(Symbol("P"), "particle of oath prefix used as a preposition ('by Allah')", "حرف جر"),
-    Symbol("w:P+") => Preposition(Symbol("P"), "Particle of oath prefix used as a preposition ('by the pen')", "حرف جر"),
-    Symbol("l:P+") => Preposition(Symbol("P"), "Lam as a prefixed preposition", "حرف جر")
+    :Al_det => ALDeterminer(Symbol("P"), "Determiner prefix ('the')", "حرف جر"),
+    :bi_prep => BiPrep(Symbol("P"), "Preposition prefix ('by', 'with', 'in')", "حرف جر"),
+    :Ea_prep => EaPrep(Symbol("P"), "Preposition prefix Ea", "حرف جر")
+    :EalaY_prep => EalaYPrep(Symbol("P"), "Preposition prefix EalaY", "حرف جر")
+    :fiy_prep => FiyPrep(Symbol("P"), "Preposition prefix EalaY", "حرف جر")
+    :ka_prep => KaPrep(Symbol("P"), "Preposition prefix ('like' or 'thus')", "حرف جر"),
+    :ta_prep => TaPrep(Symbol("P"), "particle of oath prefix used as a preposition ('by Allah')", "حرف جر"),
+    :wa_prep => WaPrep(Symbol("P"), "Particle of oath prefix used as a preposition ('by the pen')", "حرف جر"),
+    :la_prep => LaPrep(Symbol("P"), "Lam as a prefixed preposition", "حرف جر"),
+    :libi_prep => LibiPrep(Symbol("P"), "Lam as a prefixed preposition", "حرف جر"),
+    :li_prep => LiPrep(Symbol("P"), "Lam as a prefixed preposition", "حرف جر"),
+    :min_prep => MinPrep(Symbol("P"), "Lam as a prefixed preposition", "حرف جر")
 )
+const CAMEL_PREPOSITIONS_2 = Dict(
+    :ALDeterminer => "Al_det",
+    :BiPrep => "bi_prep",
+    :EaPrep => "ea_prep",
+    :EalaYPrep => "EalaY_prep",
+    :FiyPrep => "fiy_prep",
+    :KaPrep => "ka_prep",
+    :TaPrep => "ta_prep",
+    :WaPrep => "wa_prep",
+    :LaPrep => "la_prep",
+    :LibiPrep => "libi_prep",
+    :LiPrep => "li_prep",
+    :MinPrep => "min_prep"
+)
+
+# -----------------------------------------
+# Lam Prefixes
+# -----------------------------------------
 const LAM_PREFIXES = Dict(
     Symbol("l:EMPH+") => EmphaticLam(),
     Symbol("l:IMPV+") => ImperativeLam(),
     Symbol("l:PRP+") => PurposeLam()
 )
+const CAMEL_LAM_PREFIXES = Dict(
+    :la_emph => EmphaticLam(),
+)
+const CAMEL_LAM_PREFIXES_2 = Dict(
+    :EmphaticLam => "la_emph",
+)
+
+# -----------------------------------------
+# Conjunctions
+# -----------------------------------------
 const CONJUNCTIONS = Dict(
-    Symbol("CONJ") => Coordinating(),
-    Symbol("SUB") => Subordinating(),
-    Symbol("w:CONJ+") => Coordinating(Symbol("CONJ"), "Waw as a conjunctin prefix ('and')", "حرف عطف"),
+    :CONJ => Coordinating(),
+    :SUB => Subordinating(),
+    Symbol("w:CONJ+") => WaConj(Symbol("CONJ"), "Waw as a conjunctin prefix ('and')", "حرف عطف"),
+    Symbol("f:CONJ+") => FaConj(Symbol("CONJ"), "Fa as a conjunction prefix ('and')", "حرف عطف")
+)
+const CAMEL_CONJUNCTIONS = Dict(
+    :fa_conj => FaConj(Symbol("CONJ"), "Fa as a conjunction prefix ('and')", "حرف عطف")
+    :fa_conn => FaConn(),
+    :fa_rc => Coordinating(Symbol("CONJ"), "Waw as a conjunctin prefix ('and')", "حرف عطف"),
     Symbol("f:CONJ+") => Coordinating(Symbol("CONJ"), "Fa as a conjunction prefix ('and')", "حرف عطف")
 )
+
 const SUFFIXES = Dict(
     Symbol("+VOC") => Vocative(Symbol("VOC"), "Vocative suffix", "حرف نداء"),
     Symbol("+n:EMPH") => EmphaticNun(Symbol("+n:EMPH"), "Emphatic nun", "لام التوكيد")

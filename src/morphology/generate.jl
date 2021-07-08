@@ -20,3 +20,9 @@ end
 function (g::Generator)(lemma::String, features::Dict{String,String})
     return Analysis(camel_generator()(g.db).generate(lemma, features))
 end
+
+function (g::Generator)(lemma::String, features::Dict{Symbol,Type})
+    vals = map(x -> CAMEL_FEATS[Symbol(x)], values(features))
+    feats = Dict(keys(features) .=> vals)
+    return Analysis(camel_generator()(g.db).generate(lemma, feats))
+end
