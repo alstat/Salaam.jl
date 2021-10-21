@@ -4,8 +4,9 @@ end
 
 function Base.download(camel::CAMeLData, path::Union{String,Nothing}=nothing)
     @info "downloading catalogue from camel_tools"
-    HTTP.download(CATALOGUE, joinpath(@__DIR__, "../catalogue.json"), update_period=5);
-    catalogue = JSON.parsefile(joinpath(@__DIR__, "../catalogue.json"));
+    ENV["CAMEL_CATALOGUE"] = joinpath(@__DIR__, "../catalogue.json")
+    HTTP.download(CATALOGUE, ENV["CAMEL_CATALOGUE"], update_period=5);
+    catalogue = JSON.parsefile(ENV["CAMEL_CATALOGUE"]);
     if camel.type === :light
         data = catalogue["downloads"]["light"]
         url = string(GOOGLE_DRIVE, "&id=", data["file_id"])
@@ -29,6 +30,22 @@ function Base.download(camel::CAMeLData, path::Union{String,Nothing}=nothing)
         unzip(filepath, joinpath(@__DIR__, "../.."))
     else
         unzip(filepath, path)
+    end
+end
+
+function Base.delete!(::Type{CAMeLData})
+    try
+        rm(ENV["CAMEL_DATA"], recursive=true)
+        @info string("successfully deleted data at ", ENV["CAMEL_DATA"])
+    catch
+        @info "no camel data yet"
+    end
+
+    try 
+        rm(ENV["CAMEL_CATALOGUE"])
+        @info string("successfully deleted catalogue at ", ENV["CAMEL_CATALOGUE"])
+    catch
+        @info "no camel catalogue yet"
     end
 end
 

@@ -4,7 +4,7 @@ using JSON
 using PyCall: pyimport, PyObject
 using ZipFile
 
-import Base: download
+import Base: download, delete!
 
 abstract type AbstractModel end
 
@@ -26,7 +26,6 @@ include("morphology/reinflect.jl")
 include("tagger/tag.jl")
 include("tokenizers/tokenize.jl")
 include("dialectid/identify_dialect.jl")
-include("database/data.jl")
 include("printing/analysis.jl")
 
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
