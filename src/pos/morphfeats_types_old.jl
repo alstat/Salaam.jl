@@ -397,69 +397,69 @@ end
 @construct _Man Relative{Pronoun} :RELPROMAN "" ""
 
 
-enough to maintain radio contact, but you are free to evade radar coverage.'
-    'Roger, heading west,' Montaigne replied.
-    In back, Ryan was sitting by his gun. There were eight wounded men in the helicopter, but two medics were working on them and Ryan was unable to offer any help better than that. Clark rejoined him.
-    'Okay, what are we going to do with Cortez and Escobedo?'
-    'Cortez we want, the other one, hell, I don't know. How do we explain kidnapping him?'
-    'What do you think we're going to do, put him on trial?' Clark asked over the din of the engines and the wind.
-    'Anything else is cold-blooded murder. He's a prisoner now, and killing prisoners is murder, remember?'
-    You're getting legal on me, Clark thought, but he knew that Ryan was right. Killing prisoners was contrary to the code.
-    'So, we take him back?'
-    'That blows the operation,' Ryan said. He knew he was talking too loudly for the subject. He was supposed to be quiet and thoughtful now, but the environment and the event of the evening defeated that. 'Christ, I don't know what to do.'
-    'Where are we going - I mean, where's this chopper going?'
-    'I don't know.' Ryan keyed his intercom to ask. He was surprised by the answer, and communicated it to Clark.
-    'Look, let me handle it. I got an idea. I'll take him out of here when we land. Larson and I will tidy that part of it. I think I know what'll work.'
-    'But---'
-    'You don't really want to know, do you?'
-    'You can't murder him!' Jack insisted.
-    'I won't,' Clark said. Ryan didn't know how to read that answer. But it did offer a way out, and he took it.
-*
-787
+# enough to maintain radio contact, but you are free to evade radar coverage.'
+#     'Roger, heading west,' Montaigne replied.
+#     In back, Ryan was sitting by his gun. There were eight wounded men in the helicopter, but two medics were working on them and Ryan was unable to offer any help better than that. Clark rejoined him.
+#     'Okay, what are we going to do with Cortez and Escobedo?'
+#     'Cortez we want, the other one, hell, I don't know. How do we explain kidnapping him?'
+#     'What do you think we're going to do, put him on trial?' Clark asked over the din of the engines and the wind.
+#     'Anything else is cold-blooded murder. He's a prisoner now, and killing prisoners is murder, remember?'
+#     You're getting legal on me, Clark thought, but he knew that Ryan was right. Killing prisoners was contrary to the code.
+#     'So, we take him back?'
+#     'That blows the operation,' Ryan said. He knew he was talking too loudly for the subject. He was supposed to be quiet and thoughtful now, but the environment and the event of the evening defeated that. 'Christ, I don't know what to do.'
+#     'Where are we going - I mean, where's this chopper going?'
+#     'I don't know.' Ryan keyed his intercom to ask. He was surprised by the answer, and communicated it to Clark.
+#     'Look, let me handle it. I got an idea. I'll take him out of here when we land. Larson and I will tidy that part of it. I think I know what'll work.'
+#     'But---'
+#     'You don't really want to know, do you?'
+#     'You can't murder him!' Jack insisted.
+#     'I won't,' Clark said. Ryan didn't know how to read that answer. But it did offer a way out, and he took it.
+# *
+# 787
 
 
-Larson got there first. The airfield was poorly lit, only a few glow lights showing under the low ceiling, but he managed to get his aircraft down, and with his anti-collision lights blinking, he guided the way to the fuel-service area. He'd barely stopped when the helicopter landed fifty yards away.
-    Larson was amazed. In the dim blue lights he could see several holes in the aircraft. A man in a flight suit ran out towards him. Larson met him and led him to the fuel hose. It was a long one, about an inch in diameter, used to fuel private aircraft. The power to the pumps was off, but Larson knew where the switch was, and he shot the door lock. He'd never done that before, but just like in the movies, five rounds removed the brass mechanism from the wooden frame of the door. A minute later, Sergeant Bean had the nozzle into one of the outrigger tanks. That was when Clark and Escobedo appeared. A soldier held a rifle to the latter's head while the CIA officers conferred.
-    'We're going back,' Clark told the pilot.
-    'What?' Larson turned to see two soldiers taking Juardo out of the Beech and towards the helicopter.
-    'We're taking our friend here back home to Medellin. Couple of things we have to do first, though . . .'
-    'Oh, great.' Larson walked back to his aircraft and climbed up on the wing to open his fuel caps. He had to wait fifteen minutes. The helicopter usually drank fuel trough a far larger hose. When the crewman took the hose back, the chopper's rotor started turning again. Soon after that, it lifted off into the night. There was lightning ahead to the north, and Larson was just as happy that he wasn't flying there. He let Clark handle the fueling while he went inside to make a telephone call. The funny part was that he'd even make money off the deal. Except that there was nothing funny about anything had happened during the preceding month.
+# Larson got there first. The airfield was poorly lit, only a few glow lights showing under the low ceiling, but he managed to get his aircraft down, and with his anti-collision lights blinking, he guided the way to the fuel-service area. He'd barely stopped when the helicopter landed fifty yards away.
+#     Larson was amazed. In the dim blue lights he could see several holes in the aircraft. A man in a flight suit ran out towards him. Larson met him and led him to the fuel hose. It was a long one, about an inch in diameter, used to fuel private aircraft. The power to the pumps was off, but Larson knew where the switch was, and he shot the door lock. He'd never done that before, but just like in the movies, five rounds removed the brass mechanism from the wooden frame of the door. A minute later, Sergeant Bean had the nozzle into one of the outrigger tanks. That was when Clark and Escobedo appeared. A soldier held a rifle to the latter's head while the CIA officers conferred.
+#     'We're going back,' Clark told the pilot.
+#     'What?' Larson turned to see two soldiers taking Juardo out of the Beech and towards the helicopter.
+#     'We're taking our friend here back home to Medellin. Couple of things we have to do first, though . . .'
+#     'Oh, great.' Larson walked back to his aircraft and climbed up on the wing to open his fuel caps. He had to wait fifteen minutes. The helicopter usually drank fuel trough a far larger hose. When the crewman took the hose back, the chopper's rotor started turning again. Soon after that, it lifted off into the night. There was lightning ahead to the north, and Larson was just as happy that he wasn't flying there. He let Clark handle the fueling while he went inside to make a telephone call. The funny part was that he'd even make money off the deal. Except that there was nothing funny about anything had happened during the preceding month.
 
-'Okay,' PJ said into the intercom. 'That's the last pit stop, and we're heading for home.'
-    'Engine temps aren't all that great,' Willis said. The
-788
-
-
-T-64-GE-7 engines were designed to burn aviation kerosene, not the more volatile and dangerous high-octane gas used by private planes. The manufacturer's warranty said that you could use that fuel for thirty hours before the burner cans were crisped down to ashes, but the warranty didn't say anything about bad valve springs and P3 loss.
-    'Looks like we're going to cool 'em down just find,' the colonel said, nodding at the weather ahead.
-    'Thinking positive again, are we, Colonel?' Willis said as coolly as he could manage. It wasn't just a thunderstorm there, it was a hurricane that stood between them and Panama. On the whole, it was something scarier than being shot at. You couldn't shoot back at a storm.
-    'CLAW, this is CAESAR, over,' Johns called on his radio.
-    'I read you, CAESAR.'
-    'How's the weather ahead look?'
-    'Bad, sir. Recommend that you head west, find a spot to climb over and try to approach from the Pacific side.'
-    Willis scanned the navigational display. 'Uh-uh.'
-    'CLAW, we just gained about five-kay pounds in weight. We, uh, looks like we need another way.'
-    'Sir, the storm is moving west at fifteen knots, and your course to Panama takes you into the lower-right quadrant.'
-    Head-winds all the way, PJ told himself.
-    'Give me a number.'
-    'Estimated peak winds on your course home are seven-zero knots.'
-    'Great!' Willis observed. 'That makes us marginal for Panama, sir. Very damned marginal.'
-    Johns nodded. The winds were bad enough. The rain that came with them would greatly reduce engine efficiency. His flight range might be less than half of what it should be . . . no way he could tank in the storm . . . the smart move would be to find a place to land and stay there, but he couldn't do that either . . . Johns keyed his radio yet again.
-    'CLAW, this is CAESAR. We are heading for Alternate One.'
-789
+# 'Okay,' PJ said into the intercom. 'That's the last pit stop, and we're heading for home.'
+#     'Engine temps aren't all that great,' Willis said. The
+# 788
 
 
-    'Are you out of your skull?' Francie Montaigne replied.
-    'I don't like it, sir,' Willis said.
-    'Fine, you can testify to that effect someday. It's only a hundred miles off the coast, and if it doesn't work, we'll use the winds to slingshot us around. CLAW, I need a position check on Alternate One.'
+# T-64-GE-7 engines were designed to burn aviation kerosene, not the more volatile and dangerous high-octane gas used by private planes. The manufacturer's warranty said that you could use that fuel for thirty hours before the burner cans were crisped down to ashes, but the warranty didn't say anything about bad valve springs and P3 loss.
+#     'Looks like we're going to cool 'em down just find,' the colonel said, nodding at the weather ahead.
+#     'Thinking positive again, are we, Colonel?' Willis said as coolly as he could manage. It wasn't just a thunderstorm there, it was a hurricane that stood between them and Panama. On the whole, it was something scarier than being shot at. You couldn't shoot back at a storm.
+#     'CLAW, this is CAESAR, over,' Johns called on his radio.
+#     'I read you, CAESAR.'
+#     'How's the weather ahead look?'
+#     'Bad, sir. Recommend that you head west, find a spot to climb over and try to approach from the Pacific side.'
+#     Willis scanned the navigational display. 'Uh-uh.'
+#     'CLAW, we just gained about five-kay pounds in weight. We, uh, looks like we need another way.'
+#     'Sir, the storm is moving west at fifteen knots, and your course to Panama takes you into the lower-right quadrant.'
+#     Head-winds all the way, PJ told himself.
+#     'Give me a number.'
+#     'Estimated peak winds on your course home are seven-zero knots.'
+#     'Great!' Willis observed. 'That makes us marginal for Panama, sir. Very damned marginal.'
+#     Johns nodded. The winds were bad enough. The rain that came with them would greatly reduce engine efficiency. His flight range might be less than half of what it should be . . . no way he could tank in the storm . . . the smart move would be to find a place to land and stay there, but he couldn't do that either . . . Johns keyed his radio yet again.
+#     'CLAW, this is CAESAR. We are heading for Alternate One.'
+# 789
 
-'You crazy fucker,' Montaigne breathed. To her communications people: 'Call up Alternate One. I need a position check, and I need it now.'
 
-Murray was not having any fun at all. Though Adele wasn't really a major hurricane, Wegener had told him, it was more than he had ever expected to see. The seas had been forty feet, and though once Panache had looked like a white steel cliff alongside the dock, she now rode like a child's toy in a bathtub. The FBI agent had a scopalomine patch stuck to his head below and and behind his ear to combat motion-sickness, but it wasn't fighting hard enough a the moment. But Wegener was just sitting in his bridge chair, smoking his pipe like the Old man of the Sea while Murray held on to the grab-bar over his head, feeling like the man on the flying trapeze.
-    They were not in their programmed position. Wegener had explained to his visitor that there was only one place they could be. It moved, but that's where they had to be, and Murray was distantly thankful that the seas weren't quite as bad as they had been. he worked his way over to the door and looked out at the towering cylinder of cloud.
-    'Panache, this is CLAW, over,' the speaker said. Wegener rose to take the mike.
-    'CLAW, this is Panache. Your signal is weak but readable, over.'
-    Wegener gave it to the pilot, who sounded like a girl, he thought. Christ, they were everywhere now.
-    'CAESAR is inbound yours.'
-    'Roger. Please advise CAESAR that conditions are below
-790
+#     'Are you out of your skull?' Francie Montaigne replied.
+#     'I don't like it, sir,' Willis said.
+#     'Fine, you can testify to that effect someday. It's only a hundred miles off the coast, and if it doesn't work, we'll use the winds to slingshot us around. CLAW, I need a position check on Alternate One.'
+
+# 'You crazy fucker,' Montaigne breathed. To her communications people: 'Call up Alternate One. I need a position check, and I need it now.'
+
+# Murray was not having any fun at all. Though Adele wasn't really a major hurricane, Wegener had told him, it was more than he had ever expected to see. The seas had been forty feet, and though once Panache had looked like a white steel cliff alongside the dock, she now rode like a child's toy in a bathtub. The FBI agent had a scopalomine patch stuck to his head below and and behind his ear to combat motion-sickness, but it wasn't fighting hard enough a the moment. But Wegener was just sitting in his bridge chair, smoking his pipe like the Old man of the Sea while Murray held on to the grab-bar over his head, feeling like the man on the flying trapeze.
+#     They were not in their programmed position. Wegener had explained to his visitor that there was only one place they could be. It moved, but that's where they had to be, and Murray was distantly thankful that the seas weren't quite as bad as they had been. he worked his way over to the door and looked out at the towering cylinder of cloud.
+#     'Panache, this is CLAW, over,' the speaker said. Wegener rose to take the mike.
+#     'CLAW, this is Panache. Your signal is weak but readable, over.'
+#     Wegener gave it to the pilot, who sounded like a girl, he thought. Christ, they were everywhere now.
+#     'CAESAR is inbound yours.'
+#     'Roger. Please advise CAESAR that conditions are below
+# 790
