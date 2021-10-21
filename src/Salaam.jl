@@ -8,7 +8,7 @@ import Base: download
 
 abstract type AbstractModel end
 
-include("data/utils.jl")
+include("database/utils.jl")
 include("orthography/orthography.jl")
 include("pos/morphfeats_types.jl")
 include("constants.jl")
@@ -26,7 +26,7 @@ include("morphology/reinflect.jl")
 include("tagger/tag.jl")
 include("tokenizers/tokenize.jl")
 include("dialectid/identify_dialect.jl")
-include("data/data.jl")
+include("database/data.jl")
 include("printing/analysis.jl")
 
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
