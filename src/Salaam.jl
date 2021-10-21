@@ -1,9 +1,14 @@
 module Salaam
-using PrettyTables
+using HTTP
+using JSON
 using PyCall: pyimport, PyObject
+using ZipFile
+
+import Base: download
 
 abstract type AbstractModel end
 
+include("data/utils.jl")
 include("orthography/orthography.jl")
 include("pos/morphfeats_types.jl")
 include("constants.jl")
@@ -43,7 +48,8 @@ export Tatweel, Orthography, Fatha, Fathatan, Damma, Dammatan, Kasra, Kasratan, 
 # Consonants
 export Alif, AlifMaksurah, Ba, Ta, TaMarbuta, Tha, Jeem, HHa, Kha, Dal, Thal, Ra, Zain, Seen, Sheen, Sad,
        DDad, TTa, DTha, Ain, Ghain, Fa, Qaf, Kaf, Lam, Meem, Noon, Waw, Ha, Hamza, Ya,
-       AlifMaddah, AlifHamzaAbove, AlifHamzaBelow, AlifHamzatWasl, WawHamzaAbove, YaHamzaAbove
+       AlifMaddah, AlifHamzaAbove, AlifHamzaBelow, AlifHamzatWasl, WawHamzaAbove, YaHamzaAbove,
+       CAMeLData
 
 # Part of speech
 export AbstractFeature, AbstractPartOfSpeech,
@@ -54,6 +60,7 @@ export AbstractFeature, AbstractPartOfSpeech,
        AbstractPronoun, AbstractAdverb, AbstractVerb, 
        AbstractAspect, AbstractMood, AbstractVoice, 
        AbstractVerbForm, AbstractPrefix, AbstractSuffix
+export PartOfSpeech, Aspect, Mood, Pronoun, Conjunction, Rational, Irrational
 export Noun, ProperNoun, Adjective, ImperativeVerbalNoun,
        Personal, Demonstrative, Relative, Time, Location,
        Preposition, EmphaticLam, ImperativeLam, PurposeLam,
@@ -73,4 +80,7 @@ export Noun, ProperNoun, Adjective, ImperativeVerbalNoun,
        VerbFormIX, VerbFormX, VerbFormXI, VerbFormXII,
        ActiveParticle, PassiveParticle, VerbalNoun, Definite,
        Indefinite, Nominative, Genetive
+
+# to be deleted
+export VERB_ASPECTS
 end # module

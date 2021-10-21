@@ -1,6 +1,19 @@
 using Salaam
 using Test
 
+@info "type testing"
+@info VERB_ASPECTS[:PERF]
+@info typeof((VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]))
+
+function isfeat(x, y)
+    out = findfirst(z -> z isa y, x)
+    out isa Nothing ? false : true
+end
+mfeat = [VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]]
+@info isfeat(mfeat, Aspect{Perfect}) && isfeat(mfeat, Aspect{Imperative})
+
+@info findfirst(x -> x isa Aspect{Perfect}, [VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]])
+
 @info "dediac and arabic"
 bw_basmala = "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi"
 @test dediac(bw_basmala) === "bsm {llh {lrHmn {lrHym"
