@@ -28,6 +28,9 @@ include("tokenizers/tokenize.jl")
 include("dialectid/identify_dialect.jl")
 include("printing/analysis.jl")
 
+# data
+export CAMeLData, locate
+
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
 
 export isfeat, vocal, numeral, parse, arabic, dediac, encode, normalize, tokenize, disambig, predict, install_camel
@@ -47,8 +50,8 @@ export Tatweel, Orthography, Fatha, Fathatan, Damma, Dammatan, Kasra, Kasratan, 
 # Consonants
 export Alif, AlifMaksurah, Ba, Ta, TaMarbuta, Tha, Jeem, HHa, Kha, Dal, Thal, Ra, Zain, Seen, Sheen, Sad,
        DDad, TTa, DTha, Ain, Ghain, Fa, Qaf, Kaf, Lam, Meem, Noon, Waw, Ha, Hamza, Ya,
-       AlifMaddah, AlifHamzaAbove, AlifHamzaBelow, AlifHamzatWasl, WawHamzaAbove, YaHamzaAbove,
-       CAMeLData
+       AlifMaddah, AlifHamzaAbove, AlifHamzaBelow, AlifHamzatWasl, WawHamzaAbove, YaHamzaAbove
+       
 
 # Part of speech
 export AbstractFeature, AbstractPartOfSpeech,
