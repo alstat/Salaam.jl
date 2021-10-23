@@ -62,7 +62,7 @@ function Base.download(camel::CAMeLData, update_period::Int64=5)
         HTTP.open("GET", url; cookies=true, cookiejar=ckjar) do stream
             ckj = ckjar["docs.google.com"]
             code = find_gcode(ckj)
-            if code != nothing
+            if code !== nothing
                 url = string(GOOGLE_DRIVE, "&confirm=", code, "&id=", data["file_id"])
                 HTTP.request("GET", url, response_stream=stream, update_period=5)
                 Base.open(filepath, "w") do file

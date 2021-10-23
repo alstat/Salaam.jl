@@ -1,7 +1,7 @@
 using Salaam
 
 data = CAMeLData(:light)
-# data.type = :full
+data.type = :full
 
 download(data)
 delete!(CAMeLData)

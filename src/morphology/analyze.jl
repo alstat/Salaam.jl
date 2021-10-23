@@ -7,9 +7,9 @@ struct Analysis
     data::Union{Vector{Dict{Any,Any}},Dict{Any,Any}}
 end
 
-struct Analyzer
-    db::PyObject
-end
+# struct Analyzer
+#     db::PyObject
+# end
 
 function Analyzer()
     return Analyzer(:morphology)
