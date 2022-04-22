@@ -5,7 +5,7 @@
 # )
 
 const GOOGLE_DRIVE = "https://docs.google.com/uc?export=download"
-const CATALOGUE = "https://raw.githubusercontent.com/CAMeL-Lab/camel_tools/master/camel_tools/data/catalogue.json"
+const CATALOGUE = "https://raw.githubusercontent.com/CAMeL-Lab/camel-tools-data/main/catalogue-1.4.json"
 const CAMEL_DATA = joinpath(@__DIR__, "..", "data")
 const CAMEL_CATALOGUE = joinpath(@__DIR__, "catalogue.json")
 

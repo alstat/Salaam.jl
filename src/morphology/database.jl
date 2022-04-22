@@ -33,7 +33,7 @@ mutable struct MorphologyDB <: AbstractCAMeLDB
 end
 
 function MorphologyDB(db_name, flag)
-    fpath = joinpath(@__DIR__, "../../data/morphology_db", db_name, "morphology.db")
+    fpath = joinpath(@__DIR__, "db/morphology_db", db_name)
 
     return MorphologyDB(
         fpath, flag, Dict(), Dict(), nothing, 

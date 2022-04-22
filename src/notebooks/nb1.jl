@@ -1,10 +1,14 @@
 using Salaam
 
 data = CAMeLData(:light)
-data.type = :full
+# data.type = :full
 
 download(data)
 delete!(CAMeLData)
+
+db = parse(MorphologyDB, "calima-msa-r13", :a);
+
+
 
 using HTTP
 url = "https://docs.google.com/uc?export=download&id=1wznZY1nXIwKan5rLbvQjukozNrF-P0j3"
@@ -32,13 +36,16 @@ HTTP.download(url)
 
 using JSON
 GOOGLE_DRIVE = "https://docs.google.com/uc?export=download"
-CATALOGUE = "https://raw.githubusercontent.com/CAMeL-Lab/camel_tools/master/camel_tools/data/catalogue.json"
+CATALOGUE = "https://raw.githubusercontent.com/CAMeL-Lab/camel-tools-data/main/catalogue-1.4.json"
 
 ENV["CAMEL_CATALOGUE"] = joinpath(@__DIR__, "../catalogue.json")
 HTTP.download(CATALOGUE, ENV["CAMEL_CATALOGUE"], update_period=5);
 catalogue = JSON.parsefile(ENV["CAMEL_CATALOGUE"]);
+catalogue
+HTTP.download(catalogue["packages"]["morphology-db-egy-r13"]["url"])
+catalogue["packages"]["morphology-db-egy-r13"]
 filepath = joinpath(@__DIR__, "..", "data.zip")
-data = catalogue["downloads"]["light"]
+data = catalogue["components"]["DisambigMLE"]["datasets"]
 default_ckjar = HTTP.CookieRequest.default_cookiejar
 ckjar = copy(default_ckjar isa Array ? default_ckjar[Base.Threads.threadid()] : default_ckjar)
 HTTP.open("GET", url; cookies=true, cookiejar=ckjar) do io
