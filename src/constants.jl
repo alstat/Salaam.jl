@@ -5,10 +5,28 @@
 # )
 
 const GOOGLE_DRIVE = "https://docs.google.com/uc?export=download"
-const CATALOGUE = "https://raw.githubusercontent.com/CAMeL-Lab/camel-tools-data/main/catalogue-1.4.json"
-const CAMEL_DATA = joinpath(@__DIR__, "..", "data")
-const CAMEL_CATALOGUE = joinpath(@__DIR__, "catalogue.json")
+const CATALOGUE_URL = "https://raw.githubusercontent.com/CAMeL-Lab/camel-tools-data/main/catalogue-1.4.json"
 
+const CAMEL_DATA = joinpath(@__DIR__, "..", "db")
+const CAMEL_CATALOGUE = joinpath(@__DIR__, "../db/catalogue.json")
+const CAMEL_MORPHOLOGY = joinpath(@__DIR__, "../db/morphology")
+const CAMEL_DISAMBIGUATION = joinpath(@__DIR__, "../db/disambig")
+const CAMEL_DIALECTID = joinpath(@__DIR__, "../db/dialectid")
+const CAMEL_NER = joinpath(@__DIR__, "../db/ner")
+const CAMEL_SENTIMENT = joinpath(@__DIR__, "../db/sentiment")
+
+const CAMEL_MORPHOLOGY_EGY_R13 = joinpath(@__DIR__, "../db/morphology/morphology-db-egy-r13.zip");
+const CAMEL_MORPHOLOGY_MSA_R13 = joinpath(@__DIR__, "../db/morphology/morphology-db-msa-r13.zip");
+const CAMEL_MORPHOLOGY_GLF_01 = joinpath(@__DIR__, "../db/morphology/morphology-db-glf-01.zip");
+const CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13 = joinpath(@__DIR__, "../db/disambig/disambig-mle-calima-egy-r13.zip");
+const CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13 = joinpath(@__DIR__, "../db/disambig/disambig-mle-calima-msa-r13.zip");
+const CAMEL_DISAMBIG_BERT_UNFACTORED_EGY = joinpath(@__DIR__, "../db/disambig/disambig-bert-unfactored-egy.zip");
+const CAMEL_DISAMBIG_BERT_UNFACTORED_MSA = joinpath(@__DIR__, "../db/disambig/disambig-bert-unfactored-msa.zip");
+const CAMEL_DISAMBIG_BERT_UNFACTORED_GLF = joinpath(@__DIR__, "../db/disambig/disambig-bert-unfactored-glf.zip");
+const CAMEL_DIALECTID_DEFAULT = joinpath(@__DIR__, "../db/dialectid/dialectid-default.zip");
+const CAMEL_NER_ARABERT = joinpath(@__DIR__, "../db/ner/ner-arabert.zip");
+const CAMEL_SENTIMENT_MBERT = joinpath(@__DIR__, "../db/sentiment/sentiment-analysis-mbert.zip");
+const CAMEL_SENTIMENT_ARABERT = joinpath(@__DIR__, "../db/sentiment/sentiment-analysis-arabert.zip");
 # -----------------------------------------
 # Aspects
 # -----------------------------------------

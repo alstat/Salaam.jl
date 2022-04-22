@@ -8,6 +8,7 @@ ENV["CAMEL_CATALOGUE"] = joinpath(@__DIR__, "../catalogue.json");
 HTTP.download(CATALOGUE, ENV["CAMEL_CATALOGUE"], update_period=5);
 catalogue = JSON.parsefile(ENV["CAMEL_CATALOGUE"]);
 keys(catalogue["packages"])
+dump(CAMeLData)
 
 function unzip(file, exdir="")
     fileFullPath = isabspath(file) ?  file : joinpath(pwd(),file)
@@ -59,6 +60,8 @@ function create_data_folder()
     mkdir(joinpath(@__DIR__, "../../db/ner"))
     mkdir(joinpath(@__DIR__, "../../db/sentiment"))
 end
+
+
 
 # download zip file
 HTTP.download(catalogue["packages"]["morphology-db-egy-r13"]["url"], ENV["CAMEL_MORPHOLOGY_EGY_R13"])

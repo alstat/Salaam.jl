@@ -31,7 +31,6 @@ include("printing/analysis.jl")
 
 # data
 export CAMeLData, MorphologyDB, locate, parse
-
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
 
 export isfeat, vocal, numeral, parse, arabic, dediac, encode, normalize, tokenize, disambig, predict, install_camel
