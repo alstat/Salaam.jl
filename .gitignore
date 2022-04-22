@@ -25,4 +25,4 @@ Manifest.toml
 
 # camel data
 catalogue.json
-data
+db/
