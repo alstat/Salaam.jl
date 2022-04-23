@@ -1,5 +1,6 @@
 # Base.unzip
 function unzip(file, exdir="")
+    @info "Unzipping file"
     fileFullPath = isabspath(file) ?  file : joinpath(pwd(),file)
     basePath = dirname(fileFullPath)
     outPath = (exdir == "" ? basePath : (isabspath(exdir) ? exdir : joinpath(pwd(),exdir)))
@@ -7,6 +8,7 @@ function unzip(file, exdir="")
     zarchive = ZipFile.Reader(fileFullPath)
     for f in zarchive.files
         fullFilePath = joinpath(outPath,f.name)
+        @info "Zip file path " * fullFilePath
         if (endswith(f.name,"/") || endswith(f.name,"\\"))
             try
                 mkdir(fullFilePath)
@@ -19,6 +21,6 @@ function unzip(file, exdir="")
         end
     end
     close(zarchive)
-    @info "deleting zip file"
+    @info "Deleting zip file"
     rm(file)
 end
