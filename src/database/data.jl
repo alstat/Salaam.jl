@@ -46,56 +46,154 @@ function Base.download(camel::CAMeLData)
     end
 end
 
-function camel_morphology(type::Symbol=:all)
-    files = readdir(Salaam.CAMEL_MORPHOLOGY)
+function check_files(folder::String, message::String)
+    files = readdir(folder)
     if length(files) > 0
-        @info "Morphology DB is already available, no need to download. Run delete!(CAMeLData(:morphology)) to delete current Morphology DB."
-    else
-        catalogue = JSON.parsefile(Salaam.CAMEL_CATALOGUE);
-        if type == :all
-            HTTP.download(catalogue["packages"]["morphology-db-egy-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_EGY_R13)
-            HTTP.download(catalogue["packages"]["morphology-db-msa-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_MSA_R13)
-            HTTP.download(catalogue["packages"]["morphology-db-glf-01"]["url"], Salaam.CAMEL_MORPHOLOGY_GLF_01)
-            unzip(Salaam.CAMEL_MORPHOLOGY_EGY_R13)
-            unzip(Salaam.CAMEL_MORPHOLOGY_MSA_R13)
-            unzip(Salaam.CAMEL_MORPHOLOGY_GLF_01)
-        elseif type == :egy
-            HTTP.download(catalogue["packages"]["morphology-db-egy-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_EGY_R13)
-        elseif type == :msa
-            HTTP.download(catalogue["packages"]["morphology-db-msa-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_MSA_R13)
-        elseif type == :glf
-            HTTP.download(catalogue["packages"]["morphology-db-glf-01"]["url"], Salaam.CAMEL_MORPHOLOGY_GLF_01)
+        @info message
+    else 
+        @info message
+    end
+end
+
+function camel_morphology(type::Symbol=:all)
+    catalogue = JSON.parsefile(Salaam.CAMEL_CATALOGUE);
+    if type == :all
+        files = readdir(Salaam.CAMEL_MORPHOLOGY_EGY)
+        if length(files) > 0
+            @info "Morphology DB EGY is already available, no need to download. Run delete!(CAMeLData(:morphology_egy)) to delete current db."
         else
-            throw("type=:" * string(type) * ", unknown type. Choices are :egy, :msa, :glf and :all.")
+            HTTP.download(catalogue["packages"]["morphology-db-egy-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_EGY_R13)
+            unzip(Salaam.CAMEL_MORPHOLOGY_EGY_R13)
         end
+
+        files = readdir(Salaam.CAMEL_MORPHOLOGY_MSA)
+        if length(files) > 0
+            @info "Morphology DB MSA is already available, no need to download. Run delete!(CAMeLData(:morphology_msa)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["morphology-db-msa-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_MSA_R13)
+            unzip(Salaam.CAMEL_MORPHOLOGY_MSA_R13)
+        end
+        
+        files = readdir(Salaam.CAMEL_MORPHOLOGY_GLF)
+        if length(files) > 0
+            @info "Morphology DB GLF is already available, no need to download. Run delete!(CAMeLData(:morphology_glf)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["morphology-db-glf-01"]["url"], Salaam.CAMEL_MORPHOLOGY_GLF_01)
+            unzip(Salaam.CAMEL_MORPHOLOGY_GLF_01)
+        end
+    elseif type == :egy
+        files = readdir(Salaam.CAMEL_MORPHOLOGY_EGY)
+        if length(files) > 0
+            @info "Morphology DB EGY is already available, no need to download. Run delete!(CAMeLData(:morphology_egy)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["morphology-db-egy-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_EGY_R13)
+            unzip(Salaam.CAMEL_MORPHOLOGY_EGY_R13)
+        end
+    elseif type == :msa
+        files = readdir(Salaam.CAMEL_MORPHOLOGY_MSA)
+        if length(files) > 0
+            @info "Morphology DB MSA is already available, no need to download. Run delete!(CAMeLData(:morphology_msa)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["morphology-db-msa-r13"]["url"], Salaam.CAMEL_MORPHOLOGY_MSA_R13)
+            unzip(Salaam.CAMEL_MORPHOLOGY_MSA_R13)
+        end
+    elseif type == :glf
+        files = readdir(Salaam.CAMEL_MORPHOLOGY_GLF)
+        if length(files) > 0
+            @info "Morphology DB GLF is already available, no need to download. Run delete!(CAMeLData(:morphology_glf)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["morphology-db-glf-01"]["url"], Salaam.CAMEL_MORPHOLOGY_GLF_01)
+            unzip(Salaam.CAMEL_MORPHOLOGY_GLF_01)
+        end
+    else
+        throw("type=:" * string(type) * ", unknown type. Choices are :egy, :msa, :glf and :all.")
     end
 end
 
 function camel_disambiguation(type::Symbol=:all)
-    files = readdir(Salaam.CAMEL_DISAMBIGUATION)
-    if length(files) > 0
-        @info "Disambiguation DB is already available, no need to download. Run delete!(CAMeLData(:disambiguation)) to delete current Disambiguation DB."
-    else
-        catalogue = JSON.parsefile(Salaam.CAMEL_CATALOGUE);
-        if type == :all
-            HTTP.download(catalogue["packages"]["disambig-mle-calima-egy-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
-            HTTP.download(catalogue["packages"]["disambig-mle-calima-msa-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
-            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-egy"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
-            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-msa"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
-            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-glf"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
-        elseif type == :mle_egy
-            HTTP.download(catalogue["packages"]["disambig-mle-calima-egy-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
-        elseif type == :mle_msa
-            HTTP.download(catalogue["packages"]["disambig-mle-calima-msa-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
-        elseif type == :bert_egy
-            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-egy"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
-        elseif type == :bert_msa
-            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-msa"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
-        elseif type == :bert_glf
-            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-glf"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+    catalogue = JSON.parsefile(Salaam.CAMEL_CATALOGUE);
+    if type == :all
+        files = readdir(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
+        if length(files) > 0
+            @info "Disambiguation DB EGY is already available, no need to download. Run delete!(CAMeLData(:disambiguation_egy)) to delete current db."
         else
-            throw("type=:" * string(type) * ", unknown type. Choices are :mle_egy, :mle_msa, :bert_egy, :bert_msa, :bert_glf and :all.")
+            HTTP.download(catalogue["packages"]["disambig-mle-calima-egy-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
+            unzip(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
         end
+
+        files = readdir(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
+        if length(files) > 0
+            @info "Disambiguation DB MSA is already available, no need to download. Run delete!(CAMeLData(:disambiguation_msa)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-mle-calima-msa-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
+            unzip(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
+        end
+
+        files = readdir(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
+        if length(files) > 0
+            @info "Disambiguation DB BERT EGY is already available, no need to download. Run delete!(CAMeLData(:disambiguation_egy)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-egy"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
+            unzip(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
+        end
+
+        files = readdir(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
+        if length(files) > 0
+            @info "Disambiguation DB BERT MSA is already available, no need to download. Run delete!(CAMeLData(:disambiguation_msa)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-msa"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
+            unzip(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
+        end
+
+        files = readdir(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+        if length(files) > 0
+            @info "Disambiguation DB BERT GLF is already available, no need to download. Run delete!(CAMeLData(:disambiguation_glf)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-glf"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+            unzip(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+        end
+    elseif type == :mle_egy
+        files = readdir(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
+        if length(files) > 0
+            @info "Disambiguation DB EGY is already available, no need to download. Run delete!(CAMeLData(:disambiguation_egy)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-mle-calima-egy-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
+            unzip(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_EGY_R13)
+        end
+    elseif type == :mle_msa
+        files = readdir(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
+        if length(files) > 0
+            @info "Disambiguation DB MSA is already available, no need to download. Run delete!(CAMeLData(:disambiguation_msa)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-mle-calima-msa-r13"]["url"], Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
+            unzip(Salaam.CAMEL_DISAMBIG_MLE_CALIMA_MSA_R13)
+        end
+    elseif type == :bert_egy
+        files = readdir(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
+        if length(files) > 0
+            @info "Disambiguation DB BERT EGY is already available, no need to download. Run delete!(CAMeLData(:disambiguation_egy)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-egy"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
+            unzip(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_EGY)
+        end
+    elseif type == :bert_msa
+        files = readdir(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
+        if length(files) > 0
+            @info "Disambiguation DB BERT MSA is already available, no need to download. Run delete!(CAMeLData(:disambiguation_msa)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-msa"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
+            unzip(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_MSA)
+        end
+    elseif type == :bert_glf
+        files = readdir(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+        if length(files) > 0
+            @info "Disambiguation DB BERT GLF is already available, no need to download. Run delete!(CAMeLData(:disambiguation_glf)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["disambig-bert-unfactored-glf"]["url"], Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+            unzip(Salaam.CAMEL_DISAMBIG_BERT_UNFACTORED_GLF)
+        end
+    else
+        throw("type=:" * string(type) * ", unknown type. Choices are :mle_egy, :mle_msa, :bert_egy, :bert_msa, :bert_glf and :all.")
     end
 end
 
@@ -120,21 +218,41 @@ function camel_dialectidentification()
 end
 
 function camel_sentiment(type::Symbol=:all)
-    files = readdir(Salaam.CAMEL_SENTIMENT)
-    if length(files) > 0
-        @info "Sentiment DB is already available, no need to download. Run delete!(CAMeLData(:sentiment)) to delete current Sentiment DB."
-    else
-        catalogue = JSON.parsefile(Salaam.CAMEL_CATALOGUE);
-        if type == :all
-            HTTP.download(catalogue["packages"]["sentiment-analysis-mbert"]["url"], Salaam.CAMEL_SENTIMENT_MBERT)
-            HTTP.download(catalogue["packages"]["sentiment-analysis-arabert"]["url"], Salaam.CAMEL_SENTIMENT_ARABERT)    
-        elseif type == :mbert
-            HTTP.download(catalogue["packages"]["sentiment-analysis-mbert"]["url"], Salaam.CAMEL_SENTIMENT_MBERT)
-        elseif type == :arabert
-            HTTP.download(catalogue["packages"]["sentiment-analysis-arabert"]["url"], Salaam.CAMEL_SENTIMENT_ARABERT)    
+    catalogue = JSON.parsefile(Salaam.CAMEL_CATALOGUE);
+    if type == :all
+        files = readdir(Salaam.CAMEL_SENTIMENT_ANALYSIS_MBERT)
+        if length(files) > 0
+            @info "Sentiment Analysis DB MBERT is already available, no need to download. Run delete!(CAMeLData(:sentiment_mbert)) to delete current db."
         else
-            throw("type=:" * string(type) * ", unknown type. Choices are :mbert, :arabert and :all.")
+            HTTP.download(catalogue["packages"]["sentiment-analysis-mbert"]["url"], Salaam.CAMEL_SENTIMENT_ANALYSIS_MBERT)
+            unzip(Salaam.CAMEL_SENTIMENT_ANALYSIS_MBERT)
         end
+
+        files = readdir(Salaam.CAMEL_SENTIMENT_ANALYSIS_ARABERT)
+        if length(files) > 0
+            @info "Sentiment Analysis DB ARABERT is already available, no need to download. Run delete!(CAMeLData(:sentiment_arabert)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["sentiment-analysis-arabert"]["url"], Salaam.CAMEL_SENTIMENT_ANALYSIS_ARABERT)    
+            unzip(Salaam.CAMEL_SENTIMENT_ANALYSIS_ARABERT)
+        end
+    elseif type == :mbert
+        files = readdir(Salaam.CAMEL_SENTIMENT_ANALYSIS_MBERT)
+        if length(files) > 0
+            @info "Sentiment Analysis DB MBERT is already available, no need to download. Run delete!(CAMeLData(:sentiment_mbert)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["sentiment-analysis-mbert"]["url"], Salaam.CAMEL_SENTIMENT_ANALYSIS_MBERT)
+            unzip(Salaam.CAMEL_SENTIMENT_ANALYSIS_MBERT)
+        end
+    elseif type == :arabert
+        files = readdir(Salaam.CAMEL_SENTIMENT_ANALYSIS_ARABERT)
+        if length(files) > 0
+            @info "Sentiment Analysis DB ARABERT is already available, no need to download. Run delete!(CAMeLData(:sentiment_arabert)) to delete current db."
+        else
+            HTTP.download(catalogue["packages"]["sentiment-analysis-arabert"]["url"], Salaam.CAMEL_SENTIMENT_ANALYSIS_ARABERT)    
+            unzip(Salaam.CAMEL_SENTIMENT_ANALYSIS_ARABERT)
+        end
+    else
+        throw("type=:" * string(type) * ", unknown type. Choices are :mbert, :arabert and :all.")
     end
 end
 
@@ -142,7 +260,17 @@ function create_db()
     # create folder
     mkdir(Salaam.CAMEL_DATA)
     mkdir(Salaam.CAMEL_MORPHOLOGY)
+    mkdir(Salaam.CAMEL_MORPHOLOGY_EGY)
+    mkdir(Salaam.CAMEL_MORPHOLOGY_MSA)
+    mkdir(Salaam.CAMEL_MORPHOLOGY_GLF)
     mkdir(Salaam.CAMEL_DISAMBIGUATION)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_MLE)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_MLE_EGY)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_MLE_MSA)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_BERT)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_BERT_EGY)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_BERT_MSA)
+    mkdir(Salaam.CAMEL_DISAMBIGUATION_BERT_GLF)
     mkdir(Salaam.CAMEL_DIALECTID)
     mkdir(Salaam.CAMEL_NER)
     mkdir(Salaam.CAMEL_SENTIMENT)

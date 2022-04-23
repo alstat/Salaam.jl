@@ -1,23 +1,23 @@
 # Base.unzip
 function unzip(file, exdir="")
     @info "Unzipping file"
-    fileFullPath = isabspath(file) ?  file : joinpath(pwd(),file)
-    basePath = dirname(fileFullPath)
-    outPath = (exdir == "" ? basePath : (isabspath(exdir) ? exdir : joinpath(pwd(),exdir)))
-    isdir(outPath) ? "" : mkdir(outPath)
-    zarchive = ZipFile.Reader(fileFullPath)
+    file_fullpath = isabspath(file) ?  file : joinpath(pwd(), file)
+    basepath = dirname(file_fullpath)
+    outpath = (exdir == "" ? basepath : (isabspath(exdir) ? exdir : joinpath(pwd(), exdir)))
+    isdir(outpath) ? "" : mkdir(outpath)
+    zarchive = ZipFile.Reader(file_fullpath)
     for f in zarchive.files
-        fullFilePath = joinpath(outPath,f.name)
-        @info "Zip file path " * fullFilePath
+        full_filepath = joinpath(outpath, f.name)
+        @info "Zip file path " * full_filepath
         if (endswith(f.name,"/") || endswith(f.name,"\\"))
             try
-                mkdir(fullFilePath)
+                mkdir(full_filepath)
             catch
-                rm(fullFilePath, recursive=true)
-                mkdir(fullFilePath)
+                rm(full_filepath, recursive=true)
+                mkdir(full_filepath)
             end
         else
-            write(fullFilePath, read(f))
+            write(full_filepath, read(f))
         end
     end
     close(zarchive)
