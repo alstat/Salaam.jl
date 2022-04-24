@@ -1,8 +1,8 @@
 using Salaam
-data = CAMeLData(:morphology_glf)
+data = CAMeLData(:ner)
 download(data)
 delete!(data)
-delete!(CAMeLData(:all))
+#delete!(CAMeLData(:all))
 rm(Salaam.CAMEL_DISAMBIGUATION * "/", recursive=true)
 readdir(Salaam.CAMEL_MORPHOLOGY)
 
