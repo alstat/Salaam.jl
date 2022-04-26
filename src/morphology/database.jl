@@ -32,8 +32,8 @@ mutable struct MorphologyDB <: AbstractCAMeLDB
     _with_generation::Bool
 end
 
-function MorphologyDB(db_name, flag)
-    fpath = joinpath(@__DIR__, "db/morphology_db", db_name)
+function MorphologyDB(db_name::Symbol, flag)
+    fpath = joinpath(@__DIR__, "../../db/morphology", string(db_name))
 
     return MorphologyDB(
         fpath, flag, Dict(), Dict(), nothing, 
@@ -50,7 +50,7 @@ function Base.show(io::IO, e::DatabaseParseError)
     println(io, "DataParseError: ", e.msg)
 end
 
-function Base.parse(::Type{MorphologyDB}, fpath::String, flag::Union{Symbol,Vector{Symbol}})
+function Base.parse(::Type{MorphologyDB}, fpath::Symbol, flag::Union{Symbol,Vector{Symbol}})
     db = MorphologyDB(fpath, flag)
     parse_dbfile(db)
 end

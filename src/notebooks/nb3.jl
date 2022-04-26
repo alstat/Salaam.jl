@@ -1,7 +1,31 @@
 using Salaam
-data = CAMeLData(:ner)
+data = CAMeLData(:morphology)
 download(data)
-delete!(data)
+
+# MorphologyDB(:egy, "a")
+# delete!(data)
+
+db = parse(MorphologyDB, :egy, :a);
+
+function test(iter=100_000)
+    j = 1
+    while j < iter
+        replace("The quick foxes run quickly.", "fox" => "bus")
+        j += 1
+    end
+end
+
+julia> using BenchmarkTools
+
+@time test(10_000_000)
+
+import timeit
+def test(iter=100_000):
+    for i in range(iter):
+        "The quick foxes run quickly.".replace(u"fox", u"bus")
+
+timeit.timeit('test(10_000_000)', setup="from __main__ import test", number=1)
+1.586207215
 #delete!(CAMeLData(:all))
 rm(Salaam.CAMEL_DISAMBIGUATION * "/", recursive=true)
 readdir(Salaam.CAMEL_MORPHOLOGY)
