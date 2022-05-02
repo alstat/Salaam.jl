@@ -33,8 +33,8 @@ mutable struct MorphologyDB <: AbstractCAMeLDB
 end
 
 function MorphologyDB(db_name::Symbol, flag)
-    fpath = joinpath(@__DIR__, "../../db/morphology", string(db_name))
-
+    fpath = joinpath(@__DIR__, "../../db/morphology", string(db_name), "morphology.db")
+    @info fpath
     return MorphologyDB(
         fpath, flag, Dict(), Dict(), nothing, 
         Set(), Set(), Dict(), Dict(), Dict(), 
@@ -50,10 +50,10 @@ function Base.show(io::IO, e::DatabaseParseError)
     println(io, "DataParseError: ", e.msg)
 end
 
-function Base.parse(::Type{MorphologyDB}, fpath::Symbol, flag::Union{Symbol,Vector{Symbol}})
-    db = MorphologyDB(fpath, flag)
-    parse_dbfile(db)
-end
+# function Base.parse(::Type{MorphologyDB}, fpath::Symbol, flag::Union{Symbol,Vector{Symbol}})
+#     db = MorphologyDB(fpath, flag)
+#     parse_dbfile(db)
+# end
 
 function parse_default_line_toks(toks::Vector{SubString{String}})
     res = Dict()
@@ -462,7 +462,7 @@ function parse_prefix_suffix(db::MorphologyDB, lines::Vector{String}, j::Int64)
     return db, j
 end
 
-function parse_dbfile(db::MorphologyDB)
+function load(db::MorphologyDB)
     lines = readlines(db.fpath)
 
     # process DEFINES
