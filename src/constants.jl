@@ -40,7 +40,8 @@ const CAMEL_NER_ARABERT = joinpath(CAMEL_NER, "ner-arabert.zip");
 const CAMEL_SENTIMENT_ANALYSIS_MBERT = joinpath(CAMEL_SENTIMENT_MBERT, "sentiment-analysis-mbert.zip");
 const CAMEL_SENTIMENT_ANALYSIS_ARABERT = joinpath(CAMEL_SENTIMENT_ARABERT, "sentiment-analysis-arabert.zip");
 
-const BACKOFF_TYPES = ["NONE", "NOAN_ALL", "NOAN_PROP", "ADD_ALL", "ADD_PROP"]
+const BACKOFF_TYPES = Set(["NONE", "NOAN_ALL", "NOAN_PROP", "ADD_ALL", "ADD_PROP"])
+const JOIN_FEATS = Set(["gloss", "bw"])
 # -----------------------------------------
 # Aspects
 # -----------------------------------------

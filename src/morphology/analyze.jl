@@ -25,7 +25,7 @@ function Analyzer(db; backoff=nothing, norm_map=nothing, strict_digit=false, cac
     #     norm_map = DEFAULT_NORMALIZE_MAP
     # end
 
-    if backoff .∈ Ref(Set(BACKOFF_TYPES))
+    if backoff .∈ Ref(BACKOFF_TYPES)
         if backoff isa Nothing
             analyzer.backoff_condition = nothing
             analyzer.backoff_action = nothing
