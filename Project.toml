@@ -4,14 +4,7 @@ authors = ["al-ahmadgaidasaad "]
 version = "0.1.0"
 
 [deps]
-HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
-QuranTree = "f647ab69-6f05-4d64-883f-59d0fbe08d2b"
-SQLite = "0aa819cd-b072-5ff4-a722-6bc24af294d9"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-TextAnalysis = "a2db99b7-8b79-58f8-94bf-bbc811eef33d"
-ZipFile = "a5390f91-8eb1-5f08-bee0-b1d1ffed6cea"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

@@ -1,8 +1,4 @@
 module Salaam
-using HTTP
-using JSON
-using PyCall: pyimport, PyObject
-using ZipFile
 
 import Base: download, delete!
 
