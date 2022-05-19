@@ -3,7 +3,7 @@ Salaam.jl is a light suite for Arabic Natural Language Processing (ANLP). It off
 
 Salaam (سلام) /səˈläm/ is the Arabic word for "peace," a common greeting among Arabic-speaking countries and among non-Arabic-speaking Muslims around the world.
 ## Installation
-To install the package, run the following:
+To install the package run the following:
 ```julia
 julia> using Pkg
 julia> Pkg.add("Salaam")
