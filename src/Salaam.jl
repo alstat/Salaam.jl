@@ -1,6 +1,10 @@
 module Salaam
-using PrettyTables
+using HTTP
+using JSON
 using PyCall: pyimport, PyObject
+using ZipFile
+
+import Base: download, delete!
 
 abstract type AbstractModel end
 
@@ -13,22 +17,14 @@ include("utils/normalize.jl")
 include("utils/dediac.jl")
 include("utils/encode.jl")
 include("utils/parse.jl")
-include("disambig/disambig.jl")
-include("data/database.jl")
-include("morphology/analyze.jl")
-include("morphology/generate.jl")
-include("morphology/reinflect.jl")
-include("tagger/tag.jl")
 include("tokenizers/tokenize.jl")
-include("dialectid/identify_dialect.jl")
-include("data/data.jl")
-include("printing/analysis.jl")
 
+# data
+export CAMeLData, MorphologyDB, locate, load
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
 
 export isfeat, vocal, numeral, parse, arabic, dediac, encode, normalize, tokenize, disambig, predict, install_camel
-export Analysis, Analyzer, Disambiguator, Generator, Reinflector, Tagger, MorphologicalTokenizer, DialectIdentifier
-export AbstractEncoder, SimpleEncoding
+export AbstractCAMeLDB, AbstractEncoder, SimpleEncoding
 export @transliterator, genproperties
 
 # Orthography
@@ -44,6 +40,7 @@ export Tatweel, Orthography, Fatha, Fathatan, Damma, Dammatan, Kasra, Kasratan, 
 export Alif, AlifMaksurah, Ba, Ta, TaMarbuta, Tha, Jeem, HHa, Kha, Dal, Thal, Ra, Zain, Seen, Sheen, Sad,
        DDad, TTa, DTha, Ain, Ghain, Fa, Qaf, Kaf, Lam, Meem, Noon, Waw, Ha, Hamza, Ya,
        AlifMaddah, AlifHamzaAbove, AlifHamzaBelow, AlifHamzatWasl, WawHamzaAbove, YaHamzaAbove
+       
 
 # Part of speech
 export AbstractFeature, AbstractPartOfSpeech,
@@ -54,6 +51,7 @@ export AbstractFeature, AbstractPartOfSpeech,
        AbstractPronoun, AbstractAdverb, AbstractVerb, 
        AbstractAspect, AbstractMood, AbstractVoice, 
        AbstractVerbForm, AbstractPrefix, AbstractSuffix
+export PartOfSpeech, Aspect, Mood, Pronoun, Conjunction, Rational, Irrational
 export Noun, ProperNoun, Adjective, ImperativeVerbalNoun,
        Personal, Demonstrative, Relative, Time, Location,
        Preposition, EmphaticLam, ImperativeLam, PurposeLam,
@@ -73,4 +71,7 @@ export Noun, ProperNoun, Adjective, ImperativeVerbalNoun,
        VerbFormIX, VerbFormX, VerbFormXI, VerbFormXII,
        ActiveParticle, PassiveParticle, VerbalNoun, Definite,
        Indefinite, Nominative, Genetive
+
+# to be deleted
+export VERB_ASPECTS
 end # module

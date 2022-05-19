@@ -1,6 +1,19 @@
 using Salaam
 using Test
 
+@info "type testing"
+@info VERB_ASPECTS[:PERF]
+@info typeof((VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]))
+
+function isfeat(x, y)
+    out = findfirst(z -> z isa y, x)
+    out isa Nothing ? false : true
+end
+mfeat = [VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]]
+@info isfeat(mfeat, Aspect{Perfect}) && isfeat(mfeat, Aspect{Imperative})
+
+@info findfirst(x -> x isa Aspect{Perfect}, [VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]])
+
 @info "dediac and arabic"
 bw_basmala = "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi"
 @test dediac(bw_basmala) === "bsm {llh {lrHmn {lrHym"
@@ -155,10 +168,10 @@ a = parse.(Orthography, tokenize(ar_basmala))
 # @test join([d[2][1][2]["diac"] for d in dis], " ") === "بِسَمّ اللّٰه الرَحْمٰن الرَحِيم"
 
 @info "Analyzer"
-analyze = Analyzer()
-aa = analyze("موظف")
-@info aa
-# @info "Generator"
+# analyze = Analyzer()
+# aa = analyze("موظف")
+# @info aa
+# # @info "Generator"
 # generate = Generator()
 # lemma = "مُوَظَّف"
 # features = Dict(
@@ -178,23 +191,23 @@ aa = analyze("موظف")
 
 # @info reinflect(word, features)
 
-# @info "Tagger"
-# sentence11 = tokenize("نجح بايدن في الانتخابات")
-# tag = Tagger()
-# @info tag(sentence11)
+# # @info "Tagger"
+# # sentence11 = tokenize("نجح بايدن في الانتخابات")
+# # tag = Tagger()
+# # @info tag(sentence11)
 
-# @info "Morphological Tokenizer"
-# sentence12 = tokenize("فتنفست الصعداء")
-# morph_tokenize = MorphologicalTokenizer()
-# @info morph_tokenize(sentence12)
+# # @info "Morphological Tokenizer"
+# # sentence12 = tokenize("فتنفست الصعداء")
+# # morph_tokenize = MorphologicalTokenizer()
+# # @info morph_tokenize(sentence12)
 
-# # @info "Dialect Identifier"
-# # sentences13 = [
-# #     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
-# #     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
-# # ]
+# # # @info "Dialect Identifier"
+# # # sentences13 = [
+# # #     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
+# # #     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
+# # # ]
 
-# # did = DialectIdentifier()
+# # # did = DialectIdentifier()
 
-# # @info predict(did, sentences13)
+# # # @info predict(did, sentences13)
 

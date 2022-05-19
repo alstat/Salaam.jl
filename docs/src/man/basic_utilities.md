@@ -43,6 +43,12 @@ sentence4 = "ٱللَّهُ يَسْتَهْزِئُ بِهِمْ وَيَمُد
 normalize(sentence4, :ya_hamza_above)
 sentence5 = "ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ";
 normalize(sentence5, :alif_maksura)
+sentence6 = "ﷺ"
+normalize(sentence6) === "صلى الله عليه وسلم"
+sentence7 = "ﷻ"
+normalize(sentence7) === "جل جلاله"
+sentence8 = "﷽"
+normalize(sentence8) === ar_basmala
 ```
 Or a combination,
 ```@repl abc
@@ -86,14 +92,6 @@ encode(ar_basmala)
 Reversing this two Arabic characters should give us the appropriate decoding:
 ```@repl abc
 arabic(encode(ar_basmala))
-```
-If you want to see the properties of the new encoder, such as the `encoder` and `decoder` mapping used, including the new diacritics and special characters associated to the new transliteration, you can view this by calling the name of the type as follows:
-```@repl abc
-@desc MyEncoder
-```
-And for the default Buckwalter encoding, the properties can be viewed as follows:
-```@repl abc
-@desc Buckwalter
 ```
 ### Dediacritization and Normalization on Custom Transliteration
 As mentioned above, dediacritization and normalization also works on new custom transliteration. For example, dediacritizing the encoded `ar_basmala` would give us:
