@@ -9,7 +9,7 @@ import Base: download, delete!
 abstract type AbstractModel end
 
 include("orthography/orthography.jl")
-include("pos/morphfeats_types.jl")
+# include("pos/morphfeats_types.jl")
 include("constants.jl")
 include("transliterator/transliterate.jl")
 include("utils/decode.jl")
@@ -40,38 +40,5 @@ export Tatweel, Orthography, Fatha, Fathatan, Damma, Dammatan, Kasra, Kasratan, 
 export Alif, AlifMaksurah, Ba, Ta, TaMarbuta, Tha, Jeem, HHa, Kha, Dal, Thal, Ra, Zain, Seen, Sheen, Sad,
        DDad, TTa, DTha, Ain, Ghain, Fa, Qaf, Kaf, Lam, Meem, Noon, Waw, Ha, Hamza, Ya,
        AlifMaddah, AlifHamzaAbove, AlifHamzaBelow, AlifHamzatWasl, WawHamzaAbove, YaHamzaAbove
-       
 
-# Part of speech
-export AbstractFeature, AbstractPartOfSpeech,
-       AbstractNominal, AbstractState, AbstractCase,
-       AbstractPreposition, AbstractParticle, AbstractDisLetters,
-       AbstractConjunction, AbstractPerson, AbstractGender,
-       AbstractNumber, AbstractNoun, AbstractDerivedNominal,
-       AbstractPronoun, AbstractAdverb, AbstractVerb, 
-       AbstractAspect, AbstractMood, AbstractVoice, 
-       AbstractVerbForm, AbstractPrefix, AbstractSuffix
-export PartOfSpeech, Aspect, Mood, Pronoun, Conjunction, Rational, Irrational
-export Noun, ProperNoun, Adjective, ImperativeVerbalNoun,
-       Personal, Demonstrative, Relative, Time, Location,
-       Preposition, EmphaticLam, ImperativeLam, PurposeLam,
-       EmphaticNun, Coordinating, Subordinating, Accusative,
-       Amendment, Answer, Aversion, Cause, Certainty,
-       Circumstantial, Comitative, Conditional, Equalization,
-       Exhortation, Explanation, Exceptive, Future,
-       Inceptive, Interpretation, Interogative, Negative,
-       Preventive, Prohibition, Resumption, Restriction, 
-       Retraction, Result, Supplemental, Surprise, Vocative,
-       DisconnectedLetters, FirstPerson, SecondPerson,
-       ThirdPerson, Masculine, Feminine, Singular, Dual,
-       Plural, Verb, Perfect, Imperfect, Imperative, 
-       Indicative, Subjunctive, Jussive, Active, Passive,
-       VerbFormI, VerbFormII, VerbFormIII, VerbFormIV,
-       VerbFormV, VerbFormVI, VerbFormVII, VerbFormVIII,
-       VerbFormIX, VerbFormX, VerbFormXI, VerbFormXII,
-       ActiveParticle, PassiveParticle, VerbalNoun, Definite,
-       Indefinite, Nominative, Genetive
-
-# to be deleted
-export VERB_ASPECTS
 end # module

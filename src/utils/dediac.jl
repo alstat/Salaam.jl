@@ -5,14 +5,11 @@ Dediacritize the input `String` object.
 
 # Examples
 ```julia-repl
-julia> data = QuranData()
-julia> crps, tnzl = load(data)
-julia> crpsdata = table(crps)
-julia> tnzldata = table(tnzl)
-julia> dediac(verses(crpsdata[1][1])[1])
-"bsm {llh {lrHm`n {lrHym"
-julia> dediac(arabic(verses(crpsdata[1][1])[1]))
-"بسم ٱلله ٱلرحمٰن ٱلرحيم"
+julia> bw_basmala = "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi"
+julia> dediac(bw_basmala)
+"bsm {llh {lrHmn {lrHym"
+julia> dediac(arabic(bw_basmala))
+"بسم ٱلله ٱلرحمن ٱلرحيم"
 ```
 """
 function dediac(s::String)
