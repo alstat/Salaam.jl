@@ -8,7 +8,6 @@ import Base: download, delete!
 
 abstract type AbstractModel end
 
-include("database/utils.jl")
 include("orthography/orthography.jl")
 include("pos/morphfeats_types.jl")
 include("constants.jl")
@@ -18,23 +17,13 @@ include("utils/normalize.jl")
 include("utils/dediac.jl")
 include("utils/encode.jl")
 include("utils/parse.jl")
-include("disambig/disambig.jl")
-include("database/data.jl")
-include("morphology/database.jl")
-include("morphology/analyze.jl")
-include("morphology/generate.jl")
-include("morphology/reinflect.jl")
-include("tagger/tag.jl")
 include("tokenizers/tokenize.jl")
-include("dialectid/identify_dialect.jl")
-include("printing/analysis.jl")
 
 # data
 export CAMeLData, MorphologyDB, locate, load
 export BW_ENCODING, AR_DIACS_REGEX, SP_REGEX_CHARS, PUNCTUATIONS_REGEX
 
 export isfeat, vocal, numeral, parse, arabic, dediac, encode, normalize, tokenize, disambig, predict, install_camel
-export Analysis, Analyzer, Disambiguator, Generator, Reinflector, Tagger, MorphologicalTokenizer, DialectIdentifier
 export AbstractCAMeLDB, AbstractEncoder, SimpleEncoding
 export @transliterator, genproperties
 
