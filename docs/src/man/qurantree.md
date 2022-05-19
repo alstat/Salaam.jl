@@ -35,5 +35,6 @@ Salaam.arabic.(ikhlas_ddc)
 ```
 ## Transliteration
 ```@repl abc
-Salaam.encode.(ikhlas_vrs)
+ar_ikhlas = verses(tnzldata[114])
+Salaam.encode.(ar_ikhlas)
 ```
