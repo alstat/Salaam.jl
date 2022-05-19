@@ -10,12 +10,9 @@ generated from `@transliterator` can be provided, but default is `Buckwalter`.
 
 # Examples
 ```julia-repl
-julia> data = QuranData()
-julia> crps, tnzl = load(data)
-julia> crpsdata = table(crps)
-julia> tnzldata = table(tnzl)
-julia> arabic(verses(crpsdata[114])[1])
-"قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ"
+julia> bw_basmala = "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi"
+julia> arabic(bw_basmala)
+"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
 ```
 """
 function arabic(s::String)

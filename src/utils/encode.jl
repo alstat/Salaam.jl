@@ -27,12 +27,8 @@ Transliterate the input `String` object using `Buckwalter`.
 
 # Examples
 ```julia-repl
-julia> data = QuranData()
-julia> crps, tnzl = load(data)
-julia> crpsdata = table(crps)
-julia> tnzldata = table(tnzl)
-julia> basmala = arabic(verses(crpsdata[1][1])[1])
-julia> encode(basmala)
+julia> ar_basmala = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+julia> encode(ar_basmala)
 "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi"
 ```
 """
