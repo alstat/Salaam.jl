@@ -1,19 +1,6 @@
 using Salaam
 using Test
 
-@info "type testing"
-@info VERB_ASPECTS[:PERF]
-@info typeof((VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]))
-
-function isfeat(x, y)
-    out = findfirst(z -> z isa y, x)
-    out isa Nothing ? false : true
-end
-mfeat = [VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]]
-@info isfeat(mfeat, Aspect{Perfect}) && isfeat(mfeat, Aspect{Imperative})
-
-@info findfirst(x -> x isa Aspect{Perfect}, [VERB_ASPECTS[:PERF],VERB_ASPECTS[:IMPF]])
-
 @info "encoding"
 ar_basmala = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
 @test encode(ar_basmala) === "bisomi {ll~ahi {lr~aHoma`ni {lr~aHiymi"
@@ -57,15 +44,7 @@ sentence7 = "ﷻ"
 sentence8 = "﷽"
 @test normalize(sentence8) === ar_basmala
 
-sentence0 = ["بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-           "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ"
-       ]
 @test normalize("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ") === "بِسْمِ اللَّهِ الرَّحْمَانِ الرَّحِيمِ"
-# normalize("إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ")
-# normalize.(sentence0)
-
-sentence9 = "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰٓ أَجَلٍ مُّسَمًّى فَٱكْتُبُوهُ وَلْيَكْتُب بَّيْنَكُمْ كَاتِبٌۢ بِٱلْعَدْلِ وَلَا يَأْبَ كَاتِبٌ أَن يَكْتُبَ كَمَا عَلَّمَهُ ٱللَّهُ فَلْيَكْتُبْ وَلْيُمْلِلِ ٱلَّذِى عَلَيْهِ ٱلْحَقُّ وَلْيَتَّقِ ٱللَّهَ رَبَّهُۥ وَلَا يَبْخَسْ مِنْهُ شَيْـًٔا فَإِن كَانَ ٱلَّذِى عَلَيْهِ ٱلْحَقُّ سَفِيهًا أَوْ ضَعِيفًا أَوْ لَا يَسْتَطِيعُ أَن يُمِلَّ هُوَ فَلْيُمْلِلْ وَلِيُّهُۥ بِٱلْعَدْلِ وَٱسْتَشْهِدُوا۟ شَهِيدَيْنِ مِن رِّجَالِكُمْ فَإِن لَّمْ يَكُونَا رَجُلَيْنِ فَرَجُلٌ وَٱمْرَأَتَانِ مِمَّن تَرْضَوْنَ مِنَ ٱلشُّهَدَآءِ أَن تَضِلَّ إِحْدَىٰهُمَا فَتُذَكِّرَ إِحْدَىٰهُمَا ٱلْأُخْرَىٰ وَلَا يَأْبَ ٱلشُّهَدَآءُ إِذَا مَا دُعُوا۟ وَلَا تَسْـَٔمُوٓا۟ أَن تَكْتُبُوهُ صَغِيرًا أَوْ كَبِيرًا إِلَىٰٓ أَجَلِهِۦ ذَٰلِكُمْ أَقْسَطُ عِندَ ٱللَّهِ وَأَقْوَمُ لِلشَّهَٰدَةِ وَأَدْنَىٰٓ أَلَّا تَرْتَابُوٓا۟ إِلَّآ أَن تَكُونَ تِجَٰرَةً حَاضِرَةً تُدِيرُونَهَا بَيْنَكُمْ فَلَيْسَ عَلَيْكُمْ جُنَاحٌ أَلَّا تَكْتُبُوهَا وَأَشْهِدُوٓا۟ إِذَا تَبَايَعْتُمْ وَلَا يُضَآرَّ كَاتِبٌ وَلَا شَهِيدٌ وَإِن تَفْعَلُوا۟ فَإِنَّهُۥ فُسُوقٌۢ بِكُمْ وَٱتَّقُوا۟ ٱللَّهَ وَيُعَلِّمُكُمُ ٱللَّهُ وَٱللَّهُ بِكُلِّ شَىْءٍ عَلِيمٌ"
-@time dediac(sentence9)
 
 @info "tokenization"
 sentence10 = "هَلْ,; ذَهَبْتَ إِلَى المَكْتَبَةِ؟"
@@ -145,73 +124,18 @@ old_keys = collect(keys(BW_ENCODING));
 new_vals = reverse(collect(values(BW_ENCODING)));
 my_encoder = Dict(old_keys .=> new_vals)
 @transliterator my_encoder "MyEncoder"
-@info encode(ar_basmala)
-@info arabic(encode(ar_basmala))
 
-@info "parsing the orthography"
-# @info Ba <: AbstractCharacter
-a = parse.(Orthography, tokenize(ar_basmala))
-# @info Type{Ba} <: AbstractCharacter
-# @info Type{Ba} <: Type{AbstractCharacter}
-@info a
-# @info typeof(a)
-# @info a[1].data[1]
-# @info vocal(a[1].data[1])
-@info a[2]
-# @info vocal(a[2])
-# @info numeral(a[2].data[1])
-# @info numeral(a[2])
+@info "Orthographical Analysis"
+arb_token = tokenize(ar_basmala)
 
-# @info "simple encoding"
-# @info parse(SimpleEncoding, ar_basmala)
-# @info "types lunar"
-# @info Union{Alif,Maddah} <: Union{AbstractLunar}
-# @info "trying out camel"
-# disambig = Disambiguator()
-# dis = predict(disambig, split(dediac(ar_basmala)))
-# @test join([d[2][1][2]["diac"] for d in dis], " ") === "بِسَمّ اللّٰه الرَحْمٰن الرَحِيم"
+@test parse(Orthography, arb_token[1]) isa Orthography
 
-@info "Analyzer"
-# analyze = Analyzer()
-# aa = analyze("موظف")
-# @info aa
-# # @info "Generator"
-# generate = Generator()
-# lemma = "مُوَظَّف"
-# features = Dict(
-#     "pos" => "noun",
-#     "gen" => "m",
-#     "num" => "p"
-# )
-# @info generate(lemma, features)
+arb_parsed2 = parse.(Orthography, arb_token)
+@test numeral(arb_parsed2[1]) == [2, nothing, 60, nothing, 40, nothing]
 
-# @info "Reinflector"
-# reinflect = Reinflector()
-# word = "شوارع"
-# features = Dict(
-#     "num" => "d",
-#     "prc1" => "bi_prep"
-# )
+@test isfeat(arb_parsed2[1], AbstractLunar) == [1, 0, 0, 0, 1, 0]
+@test arb_parsed2[1][isfeat(arb_parsed2[1], AbstractLunar)] == [Ba, Meem]
 
-# @info reinflect(word, features)
+@test vocal(arb_parsed2[1]) == [:labial, nothing, :sibilant, nothing, :labial, nothing]
 
-# # @info "Tagger"
-# # sentence11 = tokenize("نجح بايدن في الانتخابات")
-# # tag = Tagger()
-# # @info tag(sentence11)
-
-# # @info "Morphological Tokenizer"
-# # sentence12 = tokenize("فتنفست الصعداء")
-# # morph_tokenize = MorphologicalTokenizer()
-# # @info morph_tokenize(sentence12)
-
-# # # @info "Dialect Identifier"
-# # # sentences13 = [
-# # #     "مال الهوى و مالي شكون اللي جابني ليك  ما كنت انايا ف حالي بلاو قلبي يانا بيك",
-# # #     "بدي دوب قلي قلي بجنون بحبك انا مجنون ما بنسى حبك يوم"
-# # # ]
-
-# # # did = DialectIdentifier()
-
-# # # @info predict(did, sentences13)
-
+@test parse(SimpleEncoding, ar_basmala) === "Ba+Kasra | Seen+Sukun | Meem+Kasra | <space> | AlifHamzatWasl | Lam | Lam+Shadda+Fatha | Ha+Kasra | <space> | AlifHamzatWasl | Lam | Ra+Shadda+Fatha | HHa+Sukun | Meem+Fatha+AlifKhanjareeya | Noon+Kasra | <space> | AlifHamzatWasl | Lam | Ra+Shadda+Fatha | HHa+Kasra | Ya | Meem+Kasra" 
